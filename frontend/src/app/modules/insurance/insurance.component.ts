@@ -1,9 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator, MatTableDataSource} from '@angular/material';
+import {MatPaginator, MatTableDataSource, MatDialog} from '@angular/material';
 import { Router } from '@angular/router';
 import { InsuranceService } from './insurance.service';
-import { SafePipe } from './safe.pipe';
 import { UserService } from '../../auth/user.service';
+import { InsuranceShowComponent } from './insurance-show/insurance-show.component';
 
 @Component({
   selector: 'app-insurance',
@@ -12,7 +12,7 @@ import { UserService } from '../../auth/user.service';
 })
 export class InsuranceComponent implements OnInit {
 
-  constructor(private _router: Router, private _is: InsuranceService, private _us: UserService) { }
+  constructor(private _router: Router, private _is: InsuranceService, private _us: UserService, private dialog: MatDialog) { }
 
   displayedColumns: string[] = ['_id', 'name', 'age', 'gender', 'hypertension', 'pressure', 'sugar', 'overweight', 'smooking', 'alcohol', 'exercise', 'drugs', 'edit', 'show', 'delete'];
   dataSource = new MatTableDataSource<any>([]);
@@ -43,18 +43,37 @@ export class InsuranceComponent implements OnInit {
     )
   }
 
-  // show(id:string) {
+  editRecord(id) {
+    this._router.navigate(["/insurance/" + id + "/edit"]);
+  }
 
-  //   this._is.get_course(id).subscribe(
-  //     res => {
-  //       this._is.add_user(id, { _id: localStorage.getItem("user_id")}).subscribe(
-  //         res => {}
-  //       )
-  //       // this._us.add_course(localStorage.getItem("user_id"), res).subscribe(
-  //       //   res => { this._router.navigate(["/course/show/", id]) },
-  //       //   err => {}
-  //       // )
-  //     }
-  //   )
-  // }
+  calculate(id: number) {
+    this.dialog.open(InsuranceShowComponent, {
+      height: '400px',
+      width: '600px',
+      data: {
+        id: id
+      }
+    });
+  }
+
+  showRecord(id) {
+    this._router.navigate(["/insurance/show/" + id]);
+    this.calculate(id);
+  }
+
+  deleteRecord(id: number) {
+    this._is.delete_insurance(id).subscribe(
+      res => {
+        this.dataSource.paginator = this.paginator;
+        this._is.get_all_insurances(localStorage.getItem("user_id"), this.pagesize, this.page).subscribe(
+          res => {
+            console.log("res", res);
+            this.dataSource = new MatTableDataSource<any>(res);
+          }
+        )
+      },
+      err => { console.log(err) }
+    )
+  }
 }

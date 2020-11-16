@@ -3,5 +3,5 @@
 <p>{{data.id}}</p>
 </div>
 <div mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="data.premium" cdkFocusInitial>Ok</button>
+  <button mat-button (click)="close()">Ok</button>
 </div>

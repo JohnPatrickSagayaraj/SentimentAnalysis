@@ -220,17 +220,6 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineInjector
 
 /***/ }),
 
-/***/ "./src/app/auth/Indium-software-Logo.png":
-/*!***********************************************!*\
-  !*** ./src/app/auth/Indium-software-Logo.png ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "Indium-software-Logo.png";
-
-/***/ }),
-
 /***/ "./src/app/auth/auth.guard.ts":
 /*!************************************!*\
   !*** ./src/app/auth/auth.guard.ts ***!
@@ -400,7 +389,7 @@ class LoginComponent {
     constructor(_us, _router) {
         this._us = _us;
         this._router = _router;
-        this.logo = __webpack_require__(/*! src/app/auth/Indium-software-Logo.png */ "./src/app/auth/Indium-software-Logo.png");
+        this.logo = __webpack_require__(/*! src/app/auth/logo.jpg */ "./src/app/auth/logo.jpg");
         this.user = { username: "", email: "", password: "", is_admin: false };
         this.error = "";
         this.hide = true;
@@ -544,6 +533,17 @@ LoginComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCom
 
 /***/ }),
 
+/***/ "./src/app/auth/logo.jpg":
+/*!*******************************!*\
+  !*** ./src/app/auth/logo.jpg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "logo.jpg";
+
+/***/ }),
+
 /***/ "./src/app/auth/signup/equal-validator.directive.ts":
 /*!**********************************************************!*\
   !*** ./src/app/auth/signup/equal-validator.directive.ts ***!
@@ -666,7 +666,7 @@ class SignupComponent {
     constructor(_us, _router) {
         this._us = _us;
         this._router = _router;
-        this.logo = __webpack_require__(/*! src/app/auth/Indium-software-Logo.png */ "./src/app/auth/Indium-software-Logo.png");
+        this.logo = __webpack_require__(/*! src/app/auth/logo.jpg */ "./src/app/auth/logo.jpg");
         this.user = { username: "", email: "", password: "", confirm_password: "", is_admin: false };
         this.hide = true;
     }

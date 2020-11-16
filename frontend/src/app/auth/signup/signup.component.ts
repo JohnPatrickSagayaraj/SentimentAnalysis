@@ -16,7 +16,7 @@ export class SignupComponent implements OnInit {
 
   constructor(private _us:UserService, private _router: Router) { }
 
-  public logo = require("src/app/auth/Indium-software-Logo.png");
+  public logo = require("src/app/auth/logo.jpg");
 
   public user:any = { username: "", email: "", password: "", confirm_password: "", is_admin: false };
 

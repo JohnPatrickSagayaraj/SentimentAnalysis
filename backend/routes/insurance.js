@@ -23,11 +23,8 @@ router.post("/calculate", (req, res, next) => {
 	insurance.save().then((result) => {
 		let premium = 5000;
 		age = calculateAge(req.body.age, premium);
-		console.log("age", age);
 		gender = calculateGender(req.body.gender, age);
-		console.log("gender", gender);
 		current = calculateCurrentHealth([req.body.hypertension, req.body.pressure, req.body.sugar, req.body.overweight], gender);
-		console.log("current", current);
 		output = calculateHabit([req.body.smooking, req.body.alcohol, req.body.exercise, req.body.drugs], current);
 		res.json({ result: result, premium: output.toFixed() });
 	})
@@ -77,15 +74,47 @@ function calculateHabit(habit, premium) {
 }
 
 router.patch("/:id", (req, res, next) => {
-  Insurance.update({ "_id": req.params.id }, { "$push": { "users": req.body } }, function(err, user) {
+  Insurance.update({ "_id": req.params.id }, { "$push": { "users": req.body } }, function(err, result) {
 		if(err) {
 			res.json(err);
 		}
 		else {
-			res.json(user);
+			let premium = 5000;
+			age = calculateAge(req.body.age, premium);
+			gender = calculateGender(req.body.gender, age);
+			current = calculateCurrentHealth([req.body.hypertension, req.body.pressure, req.body.sugar, req.body.overweight], gender);
+			output = calculateHabit([req.body.smooking, req.body.alcohol, req.body.exercise, req.body.drugs], current);
+			res.json({ result: result, premium: output.toFixed() });
 		}
 	})
 })
+
+router.get("/:id", (req, res, next) => {
+	Insurance.find({ "_id": req.params.id }, function(err, result) {
+		  if(err) {
+			  res.json(err);
+		  }
+		  else {
+			let premium = 5000;
+			age = calculateAge(req.body.age, premium);
+			gender = calculateGender(req.body.gender, age);
+			current = calculateCurrentHealth([req.body.hypertension, req.body.pressure, req.body.sugar, req.body.overweight], gender);
+			output = calculateHabit([req.body.smooking, req.body.alcohol, req.body.exercise, req.body.drugs], current);
+			res.json({ result: result[0], premium: output.toFixed() });
+		  }
+	})
+})
+
+router.delete("/:id", (req, res, next) => {
+	Insurance.deleteOne({ "_id": req.params.id }, function(err, result) {
+		  if(err) {
+			res.json(err);
+		  }
+		  else {
+			res.json(result);
+		  }
+	  })
+  })
 
 module.exports = router;
 

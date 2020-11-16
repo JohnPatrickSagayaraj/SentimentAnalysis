@@ -11,5 +11,8 @@ export class CalculateComponent {
   constructor(private  dialogRef:  MatDialogRef<CalculateComponent>, private _router: Router, @Inject(MAT_DIALOG_DATA) public data: any, private _us: UserService, private _cs: InsuranceService) {
   }
 
-  
+  close() {
+    this.dialogRef.close();
+    this._router.navigate(["/insurances"]);
+  }
 }

@@ -9,7 +9,7 @@ import { environment } from '../../../environments/environment';
 })
 export class InsuranceService {
 
-  public dburl = "";
+  public dburl = "http://localhost:8080";
 
   constructor(private _http: HttpClient) { }
 
@@ -28,5 +28,13 @@ export class InsuranceService {
 
   public add_user(id:string, user:any):Observable<any> {
     return this._http.patch<any>(this.dburl + "/api/insurance/" + id, user);
+  }
+
+  public edit_insurance(insurance):Observable<any> {
+    return this._http.patch<any>(this.dburl + "/api/insurance/"+ insurance._id, insurance);
+  }
+
+  public delete_insurance(id):Observable<any> {
+    return this._http.delete<any>(this.dburl + "/api/insurance/" + id);
   }
 }

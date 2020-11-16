@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare var require: any;
 
 @Component({
   selector: 'app-sidebar',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
 
   username = localStorage.getItem("currentuser");
+  path:any = require("./user_icon.png");
   email = localStorage.getItem('email');
 
   constructor() { }

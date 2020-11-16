@@ -8,6 +8,7 @@ import { DefaultModule } from './layouts/default/default.module';
 import { SharedModule } from './shared/shared.module';
 import { AuthDefaultModule } from './layouts/auth-default/auth-default.module';
 import { AuthModule } from './auth/auth.module';
+import { MatDialogModule } from "@angular/material";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AuthModule } from './auth/auth.module';
     DefaultModule,
     SharedModule,
     AuthDefaultModule,
-    AuthModule
+    AuthModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

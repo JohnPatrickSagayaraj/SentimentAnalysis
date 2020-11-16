@@ -4,10 +4,10 @@ import { DefaultComponent } from './layouts/default/default.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
-import { CourseShowComponent } from './modules/insurance/course-show/course-show.component';
 import { InsuranceCreateComponent } from './modules/insurance/insurance-create/insurance-create.component';
 import { AuthGuard } from './auth/auth.guard';
 import { InsuranceComponent } from './modules/insurance/insurance.component';
+import { InsuranceShowComponent } from './modules/insurance/insurance-show/insurance-show.component';
 
 const routes: Routes = [
   {
@@ -31,11 +31,11 @@ const routes: Routes = [
       },
       {
         path: 'insurance/show/:id',
-        component: CourseShowComponent,
+        component: InsuranceShowComponent,
         canActivate: [AuthGuard]
       },
       {
-        path: 'course/:id/edit',
+        path: 'insurance/:id/edit',
         component: InsuranceCreateComponent,
         canActivate: [AuthGuard]
       },

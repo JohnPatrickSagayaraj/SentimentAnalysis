@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Insurance } from '../insurance';
 import { InsuranceService } from '../insurance.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog, MatDialogRef } from  '@angular/material';
 import { CalculateComponent } from '../calculate/calculate.component';
 
@@ -12,16 +12,38 @@ import { CalculateComponent } from '../calculate/calculate.component';
 })
 export class InsuranceCreateComponent implements OnInit {
 
-  constructor(private _is: InsuranceService, private _router:Router, private  dialog:  MatDialog) { }
+  operation = "Create";
 
   ngOnInit(): void {
+    this.route.params.subscribe(
+      params => {
+        console.log(params);
+        if(params.id) {
+          this.operation = "Edit";
+          this._is.get_insurance(params.id).subscribe(
+            res => {
+              const result = res.result;
+              Object.keys(result).forEach((element) => {
+                if(typeof(result[element]) === 'boolean') {
+                  this.insurance[element] = result[element].toString();
+                } else {
+                  this.insurance[element] = result[element];
+                }
+              });
+            }
+          )
+        }
+      }
+    )
   }
+
+  constructor(private _is: InsuranceService, private _router:Router, private  dialog:  MatDialog, private route: ActivatedRoute) { }
 
   premium: number = 5000;
   isloading:boolean = false;
 
   insurance:any = {
-    name: "Meena",
+    name: "",
     gender: "male",
     age: null,
     hypertension: "false",
@@ -45,12 +67,22 @@ export class InsuranceCreateComponent implements OnInit {
   }
 
   submit(form) {
-    this._is.calculate_insurance(this.insurance).subscribe(
-      res => {
-        this.premium = res.premium;
-        this.calculate();
-      }
-    )
+    if(this.operation === 'Edit') {
+      this._is.edit_insurance(this.insurance).subscribe(
+        res => {
+          this.premium = res.premium;
+          this.calculate();
+        },
+        err => {}
+      )
+    } else {
+      this._is.calculate_insurance(this.insurance).subscribe(
+        res => {
+          this.premium = res.premium;
+          this.calculate();
+        }
+      )
+    }
   }
 
 }

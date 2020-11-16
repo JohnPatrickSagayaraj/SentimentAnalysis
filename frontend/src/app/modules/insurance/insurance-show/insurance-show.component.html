@@ -1,0 +1,24 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Insurance Details</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>ID:   {{ result._id }}</p>
+    <p>Name:   {{ result.name }}</p>
+    <p>Age:   {{ result.age }}</p>
+    <p>Gender:   {{ result.gender }}</p>
+    <p>hypertension:   {{ result.hypertension }}</p>
+    <p>pressure:   {{ result.pressure }}</p>
+    <p>sugar:   {{ result.sugar }}</p>
+    <p>overweight:   {{ result.overweight }}</p>
+    <p>smooking:   {{ result.smooking }}</p>
+    <p>alcohol:   {{ result.alcohol }}</p>
+    <p>exercise:   {{ result.exercise }}</p>
+    <p>drugs:   {{ result.drugs }}</p>
+    <br>
+    <h3>Premium:   {{ premium }}</h3>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="primary" (click)="close()">Ok</button>
+  </mat-card-actions>
+</mat-card>

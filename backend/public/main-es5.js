@@ -369,20 +369,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "./src/app/auth/Indium-software-Logo.png":
-  /*!***********************************************!*\
-    !*** ./src/app/auth/Indium-software-Logo.png ***!
-    \***********************************************/
-
-  /*! no static exports found */
-
-  /***/
-  function srcAppAuthIndiumSoftwareLogoPng(module, exports, __webpack_require__) {
-    module.exports = __webpack_require__.p + "Indium-software-Logo.png";
-    /***/
-  },
-
-  /***/
   "./src/app/auth/auth.guard.ts":
   /*!************************************!*\
     !*** ./src/app/auth/auth.guard.ts ***!
@@ -665,8 +651,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this._us = _us;
         this._router = _router;
         this.logo = __webpack_require__(
-        /*! src/app/auth/Indium-software-Logo.png */
-        "./src/app/auth/Indium-software-Logo.png");
+        /*! src/app/auth/logo.jpg */
+        "./src/app/auth/logo.jpg");
         this.user = {
           username: "",
           email: "",
@@ -968,6 +954,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
+  "./src/app/auth/logo.jpg":
+  /*!*******************************!*\
+    !*** ./src/app/auth/logo.jpg ***!
+    \*******************************/
+
+  /*! no static exports found */
+
+  /***/
+  function srcAppAuthLogoJpg(module, exports, __webpack_require__) {
+    module.exports = __webpack_require__.p + "logo.jpg";
+    /***/
+  },
+
+  /***/
   "./src/app/auth/signup/equal-validator.directive.ts":
   /*!**********************************************************!*\
     !*** ./src/app/auth/signup/equal-validator.directive.ts ***!
@@ -1212,8 +1212,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this._us = _us;
         this._router = _router;
         this.logo = __webpack_require__(
-        /*! src/app/auth/Indium-software-Logo.png */
-        "./src/app/auth/Indium-software-Logo.png");
+        /*! src/app/auth/logo.jpg */
+        "./src/app/auth/logo.jpg");
         this.user = {
           username: "",
           email: "",

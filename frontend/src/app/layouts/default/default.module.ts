@@ -5,12 +5,12 @@ import { DashboardComponent } from 'src/app/modules/dashboard/dashboard.componen
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MatSidenavModule, MatPaginatorModule, MatGridListModule, MatProgressSpinnerModule, MatButtonModule, MatFormFieldModule, MatCardModule, MatInputModule, MatDialogModule, MatDividerModule, MatRadioModule, MatTableModule } from '@angular/material';
-import { CourseShowComponent } from 'src/app/modules/insurance/course-show/course-show.component';
 import { FormsModule } from '@angular/forms';
 import { SafePipe } from 'src/app/modules/insurance/safe.pipe';
 import { InsuranceCreateComponent } from 'src/app/modules/insurance/insurance-create/insurance-create.component';
 import { CalculateComponent } from 'src/app/modules/insurance/calculate/calculate.component';
 import { InsuranceComponent } from 'src/app/modules/insurance/insurance.component';
+import { InsuranceShowComponent } from 'src/app/modules/insurance/insurance-show/insurance-show.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { InsuranceComponent } from 'src/app/modules/insurance/insurance.componen
     DashboardComponent,
     InsuranceComponent,
     InsuranceCreateComponent,
-    CourseShowComponent,
+    InsuranceShowComponent,
     SafePipe,
     CalculateComponent
   ],
@@ -45,7 +45,7 @@ import { InsuranceComponent } from 'src/app/modules/insurance/insurance.componen
   ],
   exports: [
     InsuranceCreateComponent,
-    CourseShowComponent,
+    InsuranceShowComponent,
     SafePipe
   ]
 })
