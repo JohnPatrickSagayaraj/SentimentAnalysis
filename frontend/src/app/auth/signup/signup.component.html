@@ -42,7 +42,6 @@
         <mat-icon matSuffix (click)="hide = !hide">{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
         <mat-error *ngIf="confirm_password.invalid || confirm_password.errors?.validateEqual">Password must be present and password must be match with password confirmation.</mat-error>
       </mat-form-field>
-      <mat-checkbox name="is_admin" class="admin-style" [(ngModel)]="user.is_admin">Admin</mat-checkbox>
       <button mat-raised-button color="primary" [disabled]="form.invalid">Signup</button>
     </form>
 

@@ -16,17 +16,7 @@ const userSchema = mongoose.Schema(
       type: String,
       required: true
     },
-    is_confirmed: {
-      type: Boolean,
-      default: false,
-      required: true
-    },
-    is_admin: {
-      type: Boolean,
-      default: false,
-      required: true
-    },
-    courses: [{
+    insurances: [{
       _id: {
         type: String
       },
@@ -34,16 +24,45 @@ const userSchema = mongoose.Schema(
         type: String,
         required: true
       },
-      description: {
+      gender: {
         type: String,
         required: true
       },
-      uri: {
-        type: String,
+      age: {
+        type: Number,
         required: true
       },
-      comment: {
-        type: String
+      hypertension: {
+        type: Boolean,
+        required: true
+      },
+      pressure: {
+        type: Boolean,
+        required: true
+      },
+      sugar: {
+        type: Boolean,
+        required: true
+      },
+      overweight: {
+        type: Boolean,
+        required: true
+      },
+      smooking: {
+        type: Boolean,
+        required: true
+      },
+      alcohol: {
+        type: Boolean,
+        required: true
+      },
+      exercise: {
+        type: Boolean,
+        required: true
+      },
+      drugs: {
+        type: Boolean,
+        required: true
       }
     }]
   }

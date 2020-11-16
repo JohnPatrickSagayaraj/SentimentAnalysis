@@ -3,21 +3,21 @@ const bodyparser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/user');
-const courseRoutes = require('./routes/course');
+const insuranceRoutes = require('./routes/insurance');
 const path = require('path');
 const app = express();
 
 app.use(bodyparser.json());
 app.use(cors());
 
-mongoose.connect('mongodb+srv://Meena:t7MNAY5qmuxqrFtT@cluster0-byhow.mongodb.net/venkata?retryWrites=true&w=majority', { useNewUrlParser:true, useUnifiedTopology: true }).then(
+mongoose.connect('mongodb+srv://Meena:t7MNAY5qmuxqrFtT@cluster0-byhow.mongodb.net/insurance?retryWrites=true&w=majority', { useNewUrlParser:true, useUnifiedTopology: true }).then(
   () => { console.log("DB connected successfully.") }
 ).catch(
   (err) => { console.log(err) }
 );
 
 app.use("/api/user", userRoutes);
-app.use("/api/course", courseRoutes);
+app.use("/api/insurance", insuranceRoutes);
 
 app.use(express.static(path.join(__dirname, "public")));
 

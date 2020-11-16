@@ -37,12 +37,11 @@ export class LoginComponent implements OnInit {
       res => {
         console.log("res", res);
         let length = Object.keys(res).length;
-  			if(length == 5) {
+  			if(length == 4) {
          localStorage.setItem("currentuser", res.username);
          localStorage.setItem("email", this.user.email);
          localStorage.setItem("user_id", res.userId);
          console.log("localstorage", localStorage);
-         localStorage.setItem("admin", JSON.stringify(res.is_admin));
   			 this._router.navigate(["/"]);
   			}
   			else {
