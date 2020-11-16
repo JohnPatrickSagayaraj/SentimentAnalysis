@@ -2,14 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Insurance } from './insurance';
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InsuranceService {
 
-  public dburl = "";
+  public dburl = "http://localhost:8080";
 
   constructor(private _http: HttpClient) { }
 
@@ -27,7 +26,9 @@ export class InsuranceService {
   }
 
   public edit_insurance(insurance):Observable<any> {
-    return this._http.patch<any>(this.dburl + "/api/insurance/"+ insurance._id, insurance);
+    const id = insurance._id;
+    delete insurance._id;
+    return this._http.put<any>(this.dburl + "/api/insurance/"+ id, insurance);
   }
 
   public delete_insurance(id):Observable<any> {

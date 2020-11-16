@@ -70,8 +70,8 @@ function calculateHabit(habit, premium) {
 	return premium;
 }
 
-router.patch("/:id", (req, res, next) => {
-  Insurance.update({ "_id": req.params.id }, function(err, result) {
+router.put("/:id", (req, res, next) => {
+  Insurance.updateOne({ "_id": req.params.id }, req.body, function(err, result) {
 		if(err) {
 			res.json(err);
 		}
