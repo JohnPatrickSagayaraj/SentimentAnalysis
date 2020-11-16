@@ -1,6 +1,6 @@
-import {Component, Inject, Injectable} from  '@angular/core';
+import {Component, Inject} from  '@angular/core';
 import { Router } from '@angular/router';
-import {MatDialogRef, MAT_DIALOG_DATA, MatDialog} from  '@angular/material/dialog';
+import {MatDialogRef, MAT_DIALOG_DATA} from  '@angular/material/dialog';
 import { UserService } from '../../../auth/user.service';
 import { InsuranceService } from '../insurance.service';
 

@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { UserService } from '../user.service';
-import { User } from '../user';
 import { Router } from '@angular/router';
 
 declare var require: any;
@@ -18,7 +17,7 @@ export class SignupComponent implements OnInit {
 
   public logo = require("src/app/auth/logo.jpg");
 
-  public user:any = { username: "", email: "", password: "", confirm_password: "", is_admin: false };
+  public user:any = { username: "", email: "", password: "", confirm_password: "" };
 
   ngOnInit(): void {
     this.alert.nativeElement.classList.remove('show');

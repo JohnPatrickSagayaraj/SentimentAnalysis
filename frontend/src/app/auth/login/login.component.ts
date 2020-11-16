@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { UserService } from '../user.service';
-import { User } from '../user';
 import { Router } from '@angular/router';
 
 declare var require: any;
@@ -18,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   public logo = require("src/app/auth/logo.jpg");
 
-  public user:any = {  username: "", email: "", password: "", is_admin: false };
+  public user:any = {  username: "", email: "", password: "" };
 
   ngOnInit(): void {
     this.alert.nativeElement.classList.remove('show');
@@ -35,13 +34,11 @@ export class LoginComponent implements OnInit {
   login(form) {
     this._us.login(form.value).subscribe(
       res => {
-        console.log("res", res);
         let length = Object.keys(res).length;
-  			if(length == 4) {
+  			if(length === 4) {
          localStorage.setItem("currentuser", res.username);
          localStorage.setItem("email", this.user.email);
          localStorage.setItem("user_id", res.userId);
-         console.log("localstorage", localStorage);
   			 this._router.navigate(["/"]);
   			}
   			else {

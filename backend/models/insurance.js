@@ -45,14 +45,10 @@ const courseSchema = mongoose.Schema({
     type: Boolean,
     required: true
   },
-  users: [{
-    _id: {
-      type: String
-    },
-    username: {
-      type: String
-    }
-  }]
+  user: {
+    type: String,
+    required: true
+  }
 })
 
 module.exports = mongoose.model("Course", courseSchema);

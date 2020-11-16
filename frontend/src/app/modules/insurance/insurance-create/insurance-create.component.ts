@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Insurance } from '../insurance';
 import { InsuranceService } from '../insurance.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MatDialog, MatDialogRef } from  '@angular/material';
+import { MatDialog } from  '@angular/material';
 import { CalculateComponent } from '../calculate/calculate.component';
 
 @Component({
@@ -53,7 +53,8 @@ export class InsuranceCreateComponent implements OnInit {
     smooking: "false",
     alcohol: "false",
     exercise: "false",
-    drugs: "false"
+    drugs: "false",
+    user: localStorage.getItem('user_id')
   };
 
   calculate() {

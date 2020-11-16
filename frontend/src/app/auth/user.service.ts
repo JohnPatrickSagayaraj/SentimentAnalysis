@@ -10,7 +10,7 @@ export class UserService {
 
   constructor(private _http: HttpClient) { }
 
-  public dburl = "http://localhost:8080";
+  public dburl = "";
 
   public user:any = { username: "", email: "", password: "" };
 
@@ -24,9 +24,5 @@ export class UserService {
 
   public logout() {
   	localStorage.clear();
-  }
-
-  public add_insurance(id:string, insurance:any):Observable<User> {
-    return this._http.patch<User>(this.dburl + "/api/user/" + id, insurance);
   }
 }

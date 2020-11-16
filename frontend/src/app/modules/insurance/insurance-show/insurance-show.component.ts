@@ -1,6 +1,6 @@
-import {Component, Inject, Injectable, OnInit} from  '@angular/core';
+import {Component, Inject, OnInit} from  '@angular/core';
 import { Router } from '@angular/router';
-import {MatDialogRef, MAT_DIALOG_DATA, MatDialog} from  '@angular/material/dialog';
+import {MatDialogRef, MAT_DIALOG_DATA} from  '@angular/material/dialog';
 import { InsuranceService } from '../insurance.service';
 
 @Component({
@@ -20,7 +20,6 @@ export class InsuranceShowComponent implements OnInit {
     this._is.get_insurance(this.data.id).subscribe(
       res => {
         this.result = res.result;
-        console.log('response', this.result);
         this.premium = res.premium;
       },
       err => {

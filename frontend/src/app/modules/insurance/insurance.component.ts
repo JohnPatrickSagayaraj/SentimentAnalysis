@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { InsuranceService } from './insurance.service';
 import { UserService } from '../../auth/user.service';
 import { InsuranceShowComponent } from './insurance-show/insurance-show.component';
-import { CalculateComponent } from './calculate/calculate.component';
 
 @Component({
   selector: 'app-insurance',
@@ -35,10 +34,8 @@ export class InsuranceComponent implements OnInit {
   }
 
   pagechange(pageevent: any) {
-    console.log("pageevent", pageevent);
     this._is.get_all_insurances(localStorage.getItem("user_id"), this.pagesize, pageevent.pageIndex + 1).subscribe(
       res => {
-        console.log("res", res);
         this.dataSource = new MatTableDataSource<any>(res);
       }
     )
@@ -69,7 +66,6 @@ export class InsuranceComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
         this._is.get_all_insurances(localStorage.getItem("user_id"), this.pagesize, this.page).subscribe(
           res => {
-            console.log("res", res);
             this.dataSource = new MatTableDataSource<any>(res);
           }
         )

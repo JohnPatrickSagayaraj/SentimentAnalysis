@@ -46,15 +46,4 @@ router.post("/signup", (req, res, next) => {
   })
 })
 
-router.patch("/:id", (req, res, next) => {
-  User.update({ "_id": req.params.id }, { "$push": { "insurances": req.body } }, function(err, user) {
-		if(err) {
-			res.json(err);
-		}
-		else {
-			res.json(user);
-		}
-	})
-})
-
 module.exports = router;

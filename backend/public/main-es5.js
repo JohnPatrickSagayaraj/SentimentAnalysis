@@ -93,27 +93,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _modules_insurance_course_show_course_show_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-    /*! ./modules/insurance/course-show/course-show.component */
-    "./src/app/modules/insurance/course-show/course-show.component.ts");
-    /* harmony import */
-
-
-    var _modules_insurance_insurance_create_insurance_create_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    var _modules_insurance_insurance_create_insurance_create_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! ./modules/insurance/insurance-create/insurance-create.component */
     "./src/app/modules/insurance/insurance-create/insurance-create.component.ts");
     /* harmony import */
 
 
-    var _auth_auth_guard__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    var _auth_auth_guard__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
     /*! ./auth/auth.guard */
     "./src/app/auth/auth.guard.ts");
     /* harmony import */
 
 
-    var _modules_insurance_insurance_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    var _modules_insurance_insurance_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
     /*! ./modules/insurance/insurance.component */
     "./src/app/modules/insurance/insurance.component.ts");
+    /* harmony import */
+
+
+    var _modules_insurance_insurance_show_insurance_show_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! ./modules/insurance/insurance-show/insurance-show.component */
+    "./src/app/modules/insurance/insurance-show/insurance-show.component.ts");
 
     var routes = [{
       path: '',
@@ -121,23 +121,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       children: [{
         path: '',
         component: _modules_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_3__["DashboardComponent"],
-        canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_8__["AuthGuard"]]
+        canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]]
       }, {
         path: 'insurances',
-        component: _modules_insurance_insurance_component__WEBPACK_IMPORTED_MODULE_9__["InsuranceComponent"],
-        canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_8__["AuthGuard"]]
+        component: _modules_insurance_insurance_component__WEBPACK_IMPORTED_MODULE_8__["InsuranceComponent"],
+        canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]]
       }, {
         path: 'insurance/new',
-        component: _modules_insurance_insurance_create_insurance_create_component__WEBPACK_IMPORTED_MODULE_7__["InsuranceCreateComponent"],
-        canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_8__["AuthGuard"]]
+        component: _modules_insurance_insurance_create_insurance_create_component__WEBPACK_IMPORTED_MODULE_6__["InsuranceCreateComponent"],
+        canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]]
       }, {
         path: 'insurance/show/:id',
-        component: _modules_insurance_course_show_course_show_component__WEBPACK_IMPORTED_MODULE_6__["CourseShowComponent"],
-        canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_8__["AuthGuard"]]
+        component: _modules_insurance_insurance_show_insurance_show_component__WEBPACK_IMPORTED_MODULE_9__["InsuranceShowComponent"],
+        canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]]
       }, {
-        path: 'course/:id/edit',
-        component: _modules_insurance_insurance_create_insurance_create_component__WEBPACK_IMPORTED_MODULE_7__["InsuranceCreateComponent"],
-        canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_8__["AuthGuard"]]
+        path: 'insurance/:id/edit',
+        component: _modules_insurance_insurance_create_insurance_create_component__WEBPACK_IMPORTED_MODULE_6__["InsuranceCreateComponent"],
+        canActivate: [_auth_auth_guard__WEBPACK_IMPORTED_MODULE_7__["AuthGuard"]]
       }]
     }, {
       path: 'login',
@@ -218,7 +218,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var AppComponent = function AppComponent() {
       _classCallCheck(this, AppComponent);
 
-      this.title = 'training';
+      this.title = 'Insurance';
     };
 
     AppComponent.ɵfac = function AppComponent_Factory(t) {
@@ -656,8 +656,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.user = {
           username: "",
           email: "",
-          password: "",
-          is_admin: false
+          password: ""
         };
         this.error = "";
         this.hide = true;
@@ -679,14 +678,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var _this = this;
 
           this._us.login(form.value).subscribe(function (res) {
-            console.log("res", res);
             var length = Object.keys(res).length;
 
-            if (length == 4) {
+            if (length === 4) {
               localStorage.setItem("currentuser", res.username);
               localStorage.setItem("email", _this.user.email);
               localStorage.setItem("user_id", res.userId);
-              console.log("localstorage", localStorage);
 
               _this._router.navigate(["/"]);
             } else {
@@ -1218,8 +1215,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           username: "",
           email: "",
           password: "",
-          confirm_password: "",
-          is_admin: false
+          confirm_password: ""
         };
         this.hide = true;
       }
@@ -1627,11 +1623,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "logout",
         value: function logout() {
           localStorage.clear();
-        }
-      }, {
-        key: "add_insurance",
-        value: function add_insurance(id, insurance) {
-          return this._http.patch(this.dburl + "/api/user/" + id, insurance);
         }
       }]);
 
@@ -2045,39 +2036,33 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var src_app_modules_insurance_course_show_course_show_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-    /*! src/app/modules/insurance/course-show/course-show.component */
-    "./src/app/modules/insurance/course-show/course-show.component.ts");
-    /* harmony import */
-
-
-    var _angular_forms__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
     /*! @angular/forms */
     "./node_modules/@angular/forms/__ivy_ngcc__/fesm2015/forms.js");
     /* harmony import */
 
 
-    var src_app_modules_insurance_safe_pipe__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
-    /*! src/app/modules/insurance/safe.pipe */
-    "./src/app/modules/insurance/safe.pipe.ts");
-    /* harmony import */
-
-
-    var src_app_modules_insurance_insurance_create_insurance_create_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    var src_app_modules_insurance_insurance_create_insurance_create_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
     /*! src/app/modules/insurance/insurance-create/insurance-create.component */
     "./src/app/modules/insurance/insurance-create/insurance-create.component.ts");
     /* harmony import */
 
 
-    var src_app_modules_insurance_calculate_calculate_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    var src_app_modules_insurance_calculate_calculate_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
     /*! src/app/modules/insurance/calculate/calculate.component */
     "./src/app/modules/insurance/calculate/calculate.component.ts");
     /* harmony import */
 
 
-    var src_app_modules_insurance_insurance_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    var src_app_modules_insurance_insurance_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
     /*! src/app/modules/insurance/insurance.component */
     "./src/app/modules/insurance/insurance.component.ts");
+    /* harmony import */
+
+
+    var src_app_modules_insurance_insurance_show_insurance_show_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    /*! src/app/modules/insurance/insurance-show/insurance-show.component */
+    "./src/app/modules/insurance/insurance-show/insurance-show.component.ts");
 
     var DefaultModule = function DefaultModule() {
       _classCallCheck(this, DefaultModule);
@@ -2090,14 +2075,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       factory: function DefaultModule_Factory(t) {
         return new (t || DefaultModule)();
       },
-      imports: [[_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"], src_app_shared_shared_module__WEBPACK_IMPORTED_MODULE_5__["SharedModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatSidenavModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatPaginatorModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatGridListModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatProgressSpinnerModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormsModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatButtonModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatFormFieldModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatCardModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatInputModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatDialogModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatDividerModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatRadioModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatTableModule"]]]
+      imports: [[_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"], src_app_shared_shared_module__WEBPACK_IMPORTED_MODULE_5__["SharedModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatSidenavModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatPaginatorModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatGridListModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatProgressSpinnerModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatButtonModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatFormFieldModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatCardModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatInputModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatDialogModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatDividerModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatRadioModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatTableModule"]]]
     });
 
     (function () {
       (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](DefaultModule, {
-        declarations: [_default_component__WEBPACK_IMPORTED_MODULE_2__["DefaultComponent"], src_app_modules_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_3__["DashboardComponent"], src_app_modules_insurance_insurance_component__WEBPACK_IMPORTED_MODULE_12__["InsuranceComponent"], src_app_modules_insurance_insurance_create_insurance_create_component__WEBPACK_IMPORTED_MODULE_10__["InsuranceCreateComponent"], src_app_modules_insurance_course_show_course_show_component__WEBPACK_IMPORTED_MODULE_7__["CourseShowComponent"], src_app_modules_insurance_safe_pipe__WEBPACK_IMPORTED_MODULE_9__["SafePipe"], src_app_modules_insurance_calculate_calculate_component__WEBPACK_IMPORTED_MODULE_11__["CalculateComponent"]],
-        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"], src_app_shared_shared_module__WEBPACK_IMPORTED_MODULE_5__["SharedModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatSidenavModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatPaginatorModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatGridListModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatProgressSpinnerModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormsModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatButtonModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatFormFieldModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatCardModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatInputModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatDialogModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatDividerModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatRadioModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatTableModule"]],
-        exports: [src_app_modules_insurance_insurance_create_insurance_create_component__WEBPACK_IMPORTED_MODULE_10__["InsuranceCreateComponent"], src_app_modules_insurance_course_show_course_show_component__WEBPACK_IMPORTED_MODULE_7__["CourseShowComponent"], src_app_modules_insurance_safe_pipe__WEBPACK_IMPORTED_MODULE_9__["SafePipe"]]
+        declarations: [_default_component__WEBPACK_IMPORTED_MODULE_2__["DefaultComponent"], src_app_modules_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_3__["DashboardComponent"], src_app_modules_insurance_insurance_component__WEBPACK_IMPORTED_MODULE_10__["InsuranceComponent"], src_app_modules_insurance_insurance_create_insurance_create_component__WEBPACK_IMPORTED_MODULE_8__["InsuranceCreateComponent"], src_app_modules_insurance_insurance_show_insurance_show_component__WEBPACK_IMPORTED_MODULE_11__["InsuranceShowComponent"], src_app_modules_insurance_calculate_calculate_component__WEBPACK_IMPORTED_MODULE_9__["CalculateComponent"]],
+        imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"], src_app_shared_shared_module__WEBPACK_IMPORTED_MODULE_5__["SharedModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatSidenavModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatPaginatorModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatGridListModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatProgressSpinnerModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatButtonModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatFormFieldModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatCardModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatInputModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatDialogModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatDividerModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatRadioModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatTableModule"]],
+        exports: [src_app_modules_insurance_insurance_create_insurance_create_component__WEBPACK_IMPORTED_MODULE_8__["InsuranceCreateComponent"]]
       });
     })();
     /*@__PURE__*/
@@ -2107,10 +2092,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](DefaultModule, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"],
         args: [{
-          declarations: [_default_component__WEBPACK_IMPORTED_MODULE_2__["DefaultComponent"], src_app_modules_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_3__["DashboardComponent"], src_app_modules_insurance_insurance_component__WEBPACK_IMPORTED_MODULE_12__["InsuranceComponent"], src_app_modules_insurance_insurance_create_insurance_create_component__WEBPACK_IMPORTED_MODULE_10__["InsuranceCreateComponent"], src_app_modules_insurance_course_show_course_show_component__WEBPACK_IMPORTED_MODULE_7__["CourseShowComponent"], src_app_modules_insurance_safe_pipe__WEBPACK_IMPORTED_MODULE_9__["SafePipe"], src_app_modules_insurance_calculate_calculate_component__WEBPACK_IMPORTED_MODULE_11__["CalculateComponent"]],
-          imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"], src_app_shared_shared_module__WEBPACK_IMPORTED_MODULE_5__["SharedModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatSidenavModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatPaginatorModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatGridListModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatProgressSpinnerModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_8__["FormsModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatButtonModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatFormFieldModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatCardModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatInputModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatDialogModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatDividerModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatRadioModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatTableModule"]],
+          declarations: [_default_component__WEBPACK_IMPORTED_MODULE_2__["DefaultComponent"], src_app_modules_dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_3__["DashboardComponent"], src_app_modules_insurance_insurance_component__WEBPACK_IMPORTED_MODULE_10__["InsuranceComponent"], src_app_modules_insurance_insurance_create_insurance_create_component__WEBPACK_IMPORTED_MODULE_8__["InsuranceCreateComponent"], src_app_modules_insurance_insurance_show_insurance_show_component__WEBPACK_IMPORTED_MODULE_11__["InsuranceShowComponent"], src_app_modules_insurance_calculate_calculate_component__WEBPACK_IMPORTED_MODULE_9__["CalculateComponent"]],
+          imports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"], src_app_shared_shared_module__WEBPACK_IMPORTED_MODULE_5__["SharedModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatSidenavModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatPaginatorModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatGridListModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatProgressSpinnerModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatButtonModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatFormFieldModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatCardModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatInputModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatDialogModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatDividerModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatRadioModule"], _angular_material__WEBPACK_IMPORTED_MODULE_6__["MatTableModule"]],
           schemas: [_angular_core__WEBPACK_IMPORTED_MODULE_0__["CUSTOM_ELEMENTS_SCHEMA"]],
-          exports: [src_app_modules_insurance_insurance_create_insurance_create_component__WEBPACK_IMPORTED_MODULE_10__["InsuranceCreateComponent"], src_app_modules_insurance_course_show_course_show_component__WEBPACK_IMPORTED_MODULE_7__["CourseShowComponent"], src_app_modules_insurance_safe_pipe__WEBPACK_IMPORTED_MODULE_9__["SafePipe"]]
+          exports: [src_app_modules_insurance_insurance_create_insurance_create_component__WEBPACK_IMPORTED_MODULE_8__["InsuranceCreateComponent"]]
         }]
       }], null, null);
     })();
@@ -2250,15 +2235,30 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! @angular/material */
     "./node_modules/@angular/material/__ivy_ngcc__/esm2015/material.js");
 
-    var CalculateComponent = function CalculateComponent(dialogRef, _router, data, _us, _cs) {
-      _classCallCheck(this, CalculateComponent);
+    var CalculateComponent =
+    /*#__PURE__*/
+    function () {
+      function CalculateComponent(dialogRef, _router, data, _us, _cs) {
+        _classCallCheck(this, CalculateComponent);
 
-      this.dialogRef = dialogRef;
-      this._router = _router;
-      this.data = data;
-      this._us = _us;
-      this._cs = _cs;
-    };
+        this.dialogRef = dialogRef;
+        this._router = _router;
+        this.data = data;
+        this._us = _us;
+        this._cs = _cs;
+      }
+
+      _createClass(CalculateComponent, [{
+        key: "close",
+        value: function close() {
+          this.dialogRef.close();
+
+          this._router.navigate(["/insurances"]);
+        }
+      }]);
+
+      return CalculateComponent;
+    }();
 
     CalculateComponent.ɵfac = function CalculateComponent_Factory(t) {
       return new (t || CalculateComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MatDialogRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MAT_DIALOG_DATA"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_auth_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_insurance_service__WEBPACK_IMPORTED_MODULE_4__["InsuranceService"]));
@@ -2268,8 +2268,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       type: CalculateComponent,
       selectors: [["ng-component"]],
       decls: 8,
-      vars: 2,
-      consts: [["mat-dialog-title", ""], ["mat-dialog-content", ""], ["mat-dialog-actions", ""], ["mat-button", "", "cdkFocusInitial", "", 3, "mat-dialog-close"]],
+      vars: 1,
+      consts: [["mat-dialog-title", ""], ["mat-dialog-content", ""], ["mat-dialog-actions", ""], ["mat-button", "", 3, "click"]],
       template: function CalculateComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "h1", 0);
@@ -2292,6 +2292,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "button", 3);
 
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function CalculateComponent_Template_button_click_6_listener() {
+            return ctx.close();
+          });
+
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](7, "Ok");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -2303,13 +2307,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.data.id);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("mat-dialog-close", ctx.data.premium);
         }
       },
-      directives: [_angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDialogTitle"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDialogContent"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDialogActions"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatButton"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDialogClose"]],
+      directives: [_angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDialogTitle"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDialogContent"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatDialogActions"], _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatButton"]],
       encapsulation: 2
     });
     /*@__PURE__*/
@@ -2335,171 +2335,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           type: _auth_user_service__WEBPACK_IMPORTED_MODULE_3__["UserService"]
         }, {
           type: _insurance_service__WEBPACK_IMPORTED_MODULE_4__["InsuranceService"]
-        }];
-      }, null);
-    })();
-    /***/
-
-  },
-
-  /***/
-  "./src/app/modules/insurance/course-show/course-show.component.ts":
-  /*!************************************************************************!*\
-    !*** ./src/app/modules/insurance/course-show/course-show.component.ts ***!
-    \************************************************************************/
-
-  /*! exports provided: CourseShowComponent */
-
-  /***/
-  function srcAppModulesInsuranceCourseShowCourseShowComponentTs(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "CourseShowComponent", function () {
-      return CourseShowComponent;
-    });
-    /* harmony import */
-
-
-    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! @angular/core */
-    "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-    /* harmony import */
-
-
-    var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! @angular/router */
-    "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
-    /* harmony import */
-
-
-    var _insurance_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ../insurance.service */
-    "./src/app/modules/insurance/insurance.service.ts");
-    /* harmony import */
-
-
-    var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! @angular/material */
-    "./node_modules/@angular/material/__ivy_ngcc__/esm2015/material.js");
-    /* harmony import */
-
-
-    var src_app_modules_insurance_safe_pipe__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! src/app/modules/insurance/safe.pipe */
-    "./src/app/modules/insurance/safe.pipe.ts");
-
-    var CourseShowComponent =
-    /*#__PURE__*/
-    function () {
-      function CourseShowComponent(_route, _cs, _router, dialog) {
-        _classCallCheck(this, CourseShowComponent);
-
-        this._route = _route;
-        this._cs = _cs;
-        this._router = _router;
-        this.dialog = dialog;
-        this.id = "";
-        this.course = {
-          name: "",
-          description: "",
-          uri: ""
-        };
-        this.id = this._route.snapshot.params.id;
-      }
-
-      _createClass(CourseShowComponent, [{
-        key: "ngOnInit",
-        value: function ngOnInit() {// this._cs.get_course(this.id).subscribe(
-          //   res => {
-          //     this.course = res;
-          //   }
-          // )
-        }
-      }]);
-
-      return CourseShowComponent;
-    }();
-
-    CourseShowComponent.ɵfac = function CourseShowComponent_Factory(t) {
-      return new (t || CourseShowComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_insurance_service__WEBPACK_IMPORTED_MODULE_2__["InsuranceService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialog"]));
-    };
-
-    CourseShowComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
-      type: CourseShowComponent,
-      selectors: [["app-course-show"]],
-      decls: 9,
-      vars: 5,
-      consts: [["align", "center"], [1, "embed-responsive", "embed-responsive-16by9", "adjust-size"], ["allowfullscreen", "", 1, "embed-responsive-item", 3, "src"], ["mat-raised-button", "", "color", "primary", 1, "middle"]],
-      template: function CourseShowComponent_Template(rf, ctx) {
-        if (rf & 1) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "h3", 0);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "p", 0);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 1);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](5, "iframe", 2);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](6, "safe");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "button", 3);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, "Complete course");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        }
-
-        if (rf & 2) {
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.course.name);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.course.description);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](6, 3, ctx.course.uri), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeResourceUrl"]);
-        }
-      },
-      directives: [_angular_material__WEBPACK_IMPORTED_MODULE_3__["MatButton"]],
-      pipes: [src_app_modules_insurance_safe_pipe__WEBPACK_IMPORTED_MODULE_4__["SafePipe"]],
-      styles: [".adjust-size[_ngcontent-%COMP%] {\r\n  width: 90%;\r\n  height: 60%;\r\n  margin: 2rem auto;\r\n}\r\n\r\nh3[_ngcontent-%COMP%] {\r\n  margin: 1rem;\r\n}\r\n\r\n.middle[_ngcontent-%COMP%] {\r\n  margin: auto;\r\n  display: block;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbW9kdWxlcy9pbnN1cmFuY2UvY291cnNlLXNob3cvY291cnNlLXNob3cuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixXQUFXO0VBQ1gsaUJBQWlCO0FBQ25COztBQUVBO0VBQ0UsWUFBWTtBQUNkOztBQUVBO0VBQ0UsWUFBWTtFQUNaLGNBQWM7QUFDaEIiLCJmaWxlIjoic3JjL2FwcC9tb2R1bGVzL2luc3VyYW5jZS9jb3Vyc2Utc2hvdy9jb3Vyc2Utc2hvdy5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmFkanVzdC1zaXplIHtcclxuICB3aWR0aDogOTAlO1xyXG4gIGhlaWdodDogNjAlO1xyXG4gIG1hcmdpbjogMnJlbSBhdXRvO1xyXG59XHJcblxyXG5oMyB7XHJcbiAgbWFyZ2luOiAxcmVtO1xyXG59XHJcblxyXG4ubWlkZGxlIHtcclxuICBtYXJnaW46IGF1dG87XHJcbiAgZGlzcGxheTogYmxvY2s7XHJcbn1cclxuIl19 */"]
-    });
-    /*@__PURE__*/
-
-    (function () {
-      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](CourseShowComponent, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
-        args: [{
-          selector: 'app-course-show',
-          templateUrl: './course-show.component.html',
-          styleUrls: ['./course-show.component.css']
-        }]
-      }], function () {
-        return [{
-          type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]
-        }, {
-          type: _insurance_service__WEBPACK_IMPORTED_MODULE_2__["InsuranceService"]
-        }, {
-          type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]
-        }, {
-          type: _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialog"]
         }];
       }, null);
     })();
@@ -3042,16 +2877,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var InsuranceCreateComponent =
     /*#__PURE__*/
     function () {
-      function InsuranceCreateComponent(_is, _router, dialog) {
+      function InsuranceCreateComponent(_is, _router, dialog, route) {
         _classCallCheck(this, InsuranceCreateComponent);
 
         this._is = _is;
         this._router = _router;
         this.dialog = dialog;
+        this.route = route;
+        this.operation = "Create";
         this.premium = 5000;
         this.isloading = false;
         this.insurance = {
-          name: "Meena",
+          name: "",
           gender: "male",
           age: null,
           hypertension: "false",
@@ -3061,13 +2898,35 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           smooking: "false",
           alcohol: "false",
           exercise: "false",
-          drugs: "false"
+          drugs: "false",
+          user: localStorage.getItem('user_id')
         };
       }
 
       _createClass(InsuranceCreateComponent, [{
         key: "ngOnInit",
-        value: function ngOnInit() {}
+        value: function ngOnInit() {
+          var _this4 = this;
+
+          this.route.params.subscribe(function (params) {
+            console.log(params);
+
+            if (params.id) {
+              _this4.operation = "Edit";
+
+              _this4._is.get_insurance(params.id).subscribe(function (res) {
+                var result = res.result;
+                Object.keys(result).forEach(function (element) {
+                  if (typeof result[element] === 'boolean') {
+                    _this4.insurance[element] = result[element].toString();
+                  } else {
+                    _this4.insurance[element] = result[element];
+                  }
+                });
+              });
+            }
+          });
+        }
       }, {
         key: "calculate",
         value: function calculate() {
@@ -3082,13 +2941,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "submit",
         value: function submit(form) {
-          var _this4 = this;
+          var _this5 = this;
 
-          this._is.calculate_insurance(this.insurance).subscribe(function (res) {
-            _this4.premium = res.premium;
+          if (this.operation === 'Edit') {
+            this._is.edit_insurance(this.insurance).subscribe(function (res) {
+              _this5.premium = res.premium;
 
-            _this4.calculate();
-          });
+              _this5.calculate();
+            }, function (err) {});
+          } else {
+            this._is.calculate_insurance(this.insurance).subscribe(function (res) {
+              _this5.premium = res.premium;
+
+              _this5.calculate();
+            });
+          }
         }
       }]);
 
@@ -3096,7 +2963,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }();
 
     InsuranceCreateComponent.ɵfac = function InsuranceCreateComponent_Factory(t) {
-      return new (t || InsuranceCreateComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_insurance_service__WEBPACK_IMPORTED_MODULE_2__["InsuranceService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_material__WEBPACK_IMPORTED_MODULE_4__["MatDialog"]));
+      return new (t || InsuranceCreateComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_insurance_service__WEBPACK_IMPORTED_MODULE_2__["InsuranceService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_material__WEBPACK_IMPORTED_MODULE_4__["MatDialog"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]));
     };
 
     InsuranceCreateComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -3140,6 +3007,306 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
         }, {
           type: _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatDialog"]
+        }, {
+          type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]
+        }];
+      }, null);
+    })();
+    /***/
+
+  },
+
+  /***/
+  "./src/app/modules/insurance/insurance-show/insurance-show.component.ts":
+  /*!******************************************************************************!*\
+    !*** ./src/app/modules/insurance/insurance-show/insurance-show.component.ts ***!
+    \******************************************************************************/
+
+  /*! exports provided: InsuranceShowComponent */
+
+  /***/
+  function srcAppModulesInsuranceInsuranceShowInsuranceShowComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "InsuranceShowComponent", function () {
+      return InsuranceShowComponent;
+    });
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/material/dialog */
+    "./node_modules/@angular/material/__ivy_ngcc__/esm2015/dialog.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _insurance_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ../insurance.service */
+    "./src/app/modules/insurance/insurance.service.ts");
+    /* harmony import */
+
+
+    var _angular_material__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/material */
+    "./node_modules/@angular/material/__ivy_ngcc__/esm2015/material.js");
+
+    var InsuranceShowComponent =
+    /*#__PURE__*/
+    function () {
+      function InsuranceShowComponent(dialogRef, _router, data, _is) {
+        _classCallCheck(this, InsuranceShowComponent);
+
+        this.dialogRef = dialogRef;
+        this._router = _router;
+        this.data = data;
+        this._is = _is;
+        this.result = {};
+        this.premium = 5000;
+      }
+
+      _createClass(InsuranceShowComponent, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          var _this6 = this;
+
+          this._is.get_insurance(this.data.id).subscribe(function (res) {
+            _this6.result = res.result;
+            _this6.premium = res.premium;
+          }, function (err) {
+            console.log(err);
+          });
+        }
+      }, {
+        key: "close",
+        value: function close() {
+          this.dialogRef.close();
+        }
+      }]);
+
+      return InsuranceShowComponent;
+    }();
+
+    InsuranceShowComponent.ɵfac = function InsuranceShowComponent_Factory(t) {
+      return new (t || InsuranceShowComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MatDialogRef"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MAT_DIALOG_DATA"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_insurance_service__WEBPACK_IMPORTED_MODULE_3__["InsuranceService"]));
+    };
+
+    InsuranceShowComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
+      type: InsuranceShowComponent,
+      selectors: [["app-insurance-show"]],
+      decls: 35,
+      vars: 13,
+      consts: [[1, "example-card"], ["mat-button", "", "color", "primary", 3, "click"]],
+      template: function InsuranceShowComponent_Template(rf, ctx) {
+        if (rf & 1) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "mat-card", 0);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "mat-card-header");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "mat-card-title");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Insurance Details");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "mat-card-content");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "p");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "p");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "p");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "p");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](12);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "p");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "p");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](16);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "p");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](18);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](19, "p");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](20);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](21, "p");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](22);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](23, "p");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](24);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "p");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](26);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](27, "p");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](28);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](29, "br");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](30, "h3");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](31);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](32, "mat-card-actions");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](33, "button", 1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function InsuranceShowComponent_Template_button_click_33_listener() {
+            return ctx.close();
+          });
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](34, "Ok");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        }
+
+        if (rf & 2) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("ID: ", ctx.result._id, "");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Name: ", ctx.result.name, "");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Age: ", ctx.result.age, "");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Gender: ", ctx.result.gender, "");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("hypertension: ", ctx.result.hypertension, "");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("pressure: ", ctx.result.pressure, "");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("sugar: ", ctx.result.sugar, "");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("overweight: ", ctx.result.overweight, "");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("smooking: ", ctx.result.smooking, "");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("alcohol: ", ctx.result.alcohol, "");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("exercise: ", ctx.result.exercise, "");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("drugs: ", ctx.result.drugs, "");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("Premium: ", ctx.premium, "");
+        }
+      },
+      directives: [_angular_material__WEBPACK_IMPORTED_MODULE_4__["MatCard"], _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatCardHeader"], _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatCardTitle"], _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatCardContent"], _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatCardActions"], _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatButton"]],
+      styles: ["h3[_ngcontent-%COMP%] {\r\n  color: red;\r\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbW9kdWxlcy9pbnN1cmFuY2UvaW5zdXJhbmNlLXNob3cvaW5zdXJhbmNlLXNob3cuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsImZpbGUiOiJzcmMvYXBwL21vZHVsZXMvaW5zdXJhbmNlL2luc3VyYW5jZS1zaG93L2luc3VyYW5jZS1zaG93LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJoMyB7XHJcbiAgY29sb3I6IHJlZDtcclxufVxyXG4iXX0= */"]
+    });
+    /*@__PURE__*/
+
+    (function () {
+      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](InsuranceShowComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+          selector: 'app-insurance-show',
+          templateUrl: './insurance-show.component.html',
+          styleUrls: ['./insurance-show.component.css']
+        }]
+      }], function () {
+        return [{
+          type: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MatDialogRef"]
+        }, {
+          type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+        }, {
+          type: undefined,
+          decorators: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+            args: [_angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MAT_DIALOG_DATA"]]
+          }]
+        }, {
+          type: _insurance_service__WEBPACK_IMPORTED_MODULE_3__["InsuranceService"]
         }];
       }, null);
     })();
@@ -3181,19 +3348,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    var _insurance_show_insurance_show_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ./insurance-show/insurance-show.component */
+    "./src/app/modules/insurance/insurance-show/insurance-show.component.ts");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! @angular/router */
     "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
     /* harmony import */
 
 
-    var _insurance_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _insurance_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! ./insurance.service */
     "./src/app/modules/insurance/insurance.service.ts");
     /* harmony import */
 
 
-    var _auth_user_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _auth_user_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! ../../auth/user.service */
     "./src/app/auth/user.service.ts");
 
@@ -3217,11 +3390,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var element_r69 = ctx.$implicit;
+        var element_r68 = ctx.$implicit;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", element_r69._id, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", element_r68._id, " ");
       }
     }
 
@@ -3245,11 +3418,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var element_r70 = ctx.$implicit;
+        var element_r69 = ctx.$implicit;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", element_r70.name, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", element_r69.name, " ");
       }
     }
 
@@ -3273,11 +3446,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var element_r71 = ctx.$implicit;
+        var element_r70 = ctx.$implicit;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", element_r71.age, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", element_r70.age, " ");
       }
     }
 
@@ -3301,11 +3474,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var element_r72 = ctx.$implicit;
+        var element_r71 = ctx.$implicit;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", element_r72.gender, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", element_r71.gender, " ");
       }
     }
 
@@ -3329,11 +3502,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var element_r73 = ctx.$implicit;
+        var element_r72 = ctx.$implicit;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", element_r73.hypertension, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", element_r72.hypertension, " ");
       }
     }
 
@@ -3357,11 +3530,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var element_r74 = ctx.$implicit;
+        var element_r73 = ctx.$implicit;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", element_r74.pressure, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", element_r73.pressure, " ");
       }
     }
 
@@ -3385,11 +3558,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var element_r75 = ctx.$implicit;
+        var element_r74 = ctx.$implicit;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", element_r75.sugar, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", element_r74.sugar, " ");
       }
     }
 
@@ -3413,11 +3586,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var element_r76 = ctx.$implicit;
+        var element_r75 = ctx.$implicit;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", element_r76.overweight, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", element_r75.overweight, " ");
       }
     }
 
@@ -3441,11 +3614,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var element_r77 = ctx.$implicit;
+        var element_r76 = ctx.$implicit;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", element_r77.smooking, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", element_r76.smooking, " ");
       }
     }
 
@@ -3469,11 +3642,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var element_r78 = ctx.$implicit;
+        var element_r77 = ctx.$implicit;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", element_r78.alcohol, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", element_r77.alcohol, " ");
       }
     }
 
@@ -3497,11 +3670,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var element_r79 = ctx.$implicit;
+        var element_r78 = ctx.$implicit;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", element_r79.exercise, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", element_r78.exercise, " ");
       }
     }
 
@@ -3525,11 +3698,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       if (rf & 2) {
-        var element_r80 = ctx.$implicit;
+        var element_r79 = ctx.$implicit;
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", element_r80.drugs, " ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", element_r79.drugs, " ");
       }
     }
 
@@ -3545,9 +3718,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     function InsuranceComponent_td_40_Template(rf, ctx) {
       if (rf & 1) {
+        var _r82 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "td", 23);
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "button", 24);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function InsuranceComponent_td_40_Template_button_click_1_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r82);
+
+          var element_r80 = ctx.$implicit;
+
+          var ctx_r81 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r81.editRecord(element_r80._id);
+        });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Edit ");
 
@@ -3557,21 +3742,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     }
 
-    function InsuranceComponent_td_41_Template(rf, ctx) {
-      if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "td", 23);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "button", 25);
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Delete ");
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-      }
-    }
-
-    function InsuranceComponent_th_43_Template(rf, ctx) {
+    function InsuranceComponent_th_42_Template(rf, ctx) {
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "th", 22);
 
@@ -3581,11 +3752,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     }
 
-    function InsuranceComponent_td_44_Template(rf, ctx) {
+    function InsuranceComponent_td_43_Template(rf, ctx) {
       if (rf & 1) {
+        var _r85 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "td", 23);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "button", 26);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "button", 25);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function InsuranceComponent_td_43_Template_button_click_1_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r85);
+
+          var element_r83 = ctx.$implicit;
+
+          var ctx_r84 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r84.showRecord(element_r83._id);
+        });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Show ");
 
@@ -3595,7 +3778,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     }
 
-    function InsuranceComponent_th_46_Template(rf, ctx) {
+    function InsuranceComponent_th_45_Template(rf, ctx) {
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "th", 22);
 
@@ -3605,11 +3788,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     }
 
-    function InsuranceComponent_td_47_Template(rf, ctx) {
+    function InsuranceComponent_td_46_Template(rf, ctx) {
       if (rf & 1) {
+        var _r88 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵgetCurrentView"]();
+
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "td", 23);
 
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "button", 25);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "button", 26);
+
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function InsuranceComponent_td_46_Template_button_click_1_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵrestoreView"](_r88);
+
+          var element_r86 = ctx.$implicit;
+
+          var ctx_r87 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+
+          return ctx_r87.deleteRecord(element_r86._id);
+        });
 
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2, "Delete ");
 
@@ -3619,13 +3814,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     }
 
-    function InsuranceComponent_tr_48_Template(rf, ctx) {
+    function InsuranceComponent_tr_47_Template(rf, ctx) {
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "tr", 27);
       }
     }
 
-    function InsuranceComponent_tr_49_Template(rf, ctx) {
+    function InsuranceComponent_tr_48_Template(rf, ctx) {
       if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](0, "tr", 28);
       }
@@ -3634,12 +3829,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var InsuranceComponent =
     /*#__PURE__*/
     function () {
-      function InsuranceComponent(_router, _is, _us) {
+      function InsuranceComponent(_router, _is, _us, dialog) {
         _classCallCheck(this, InsuranceComponent);
 
         this._router = _router;
         this._is = _is;
         this._us = _us;
+        this.dialog = dialog;
         this.displayedColumns = ['_id', 'name', 'age', 'gender', 'hypertension', 'pressure', 'sugar', 'overweight', 'smooking', 'alcohol', 'exercise', 'drugs', 'edit', 'show', 'delete'];
         this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatTableDataSource"]([]);
         this.totalpage = 1000;
@@ -3650,25 +3846,60 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(InsuranceComponent, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this5 = this;
+          var _this7 = this;
 
           this.dataSource.paginator = this.paginator;
 
           this._is.get_all_insurances(localStorage.getItem("user_id"), this.pagesize, this.page).subscribe(function (res) {
             console.log("res", res);
-            _this5.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatTableDataSource"](res);
+            _this7.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatTableDataSource"](res);
           });
         }
       }, {
         key: "pagechange",
         value: function pagechange(pageevent) {
-          var _this6 = this;
-
-          console.log("pageevent", pageevent);
+          var _this8 = this;
 
           this._is.get_all_insurances(localStorage.getItem("user_id"), this.pagesize, pageevent.pageIndex + 1).subscribe(function (res) {
-            console.log("res", res);
-            _this6.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatTableDataSource"](res);
+            _this8.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatTableDataSource"](res);
+          });
+        }
+      }, {
+        key: "editRecord",
+        value: function editRecord(id) {
+          this._router.navigate(["/insurance/" + id + "/edit"]);
+        }
+      }, {
+        key: "calculate",
+        value: function calculate(id) {
+          this.dialog.open(_insurance_show_insurance_show_component__WEBPACK_IMPORTED_MODULE_2__["InsuranceShowComponent"], {
+            height: '400px',
+            width: '600px',
+            data: {
+              id: id
+            }
+          });
+        }
+      }, {
+        key: "showRecord",
+        value: function showRecord(id) {
+          this._router.navigate(["/insurance/show/" + id]);
+
+          this.calculate(id);
+        }
+      }, {
+        key: "deleteRecord",
+        value: function deleteRecord(id) {
+          var _this9 = this;
+
+          this._is.delete_insurance(id).subscribe(function (res) {
+            _this9.dataSource.paginator = _this9.paginator;
+
+            _this9._is.get_all_insurances(localStorage.getItem("user_id"), _this9.pagesize, _this9.page).subscribe(function (res) {
+              _this9.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatTableDataSource"](res);
+            });
+          }, function (err) {
+            console.log(err);
           });
         }
       }]);
@@ -3677,7 +3908,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }();
 
     InsuranceComponent.ɵfac = function InsuranceComponent_Factory(t) {
-      return new (t || InsuranceComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_insurance_service__WEBPACK_IMPORTED_MODULE_3__["InsuranceService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_auth_user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"]));
+      return new (t || InsuranceComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_insurance_service__WEBPACK_IMPORTED_MODULE_4__["InsuranceService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_auth_user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDialog"]));
     };
 
     InsuranceComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -3694,9 +3925,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵqueryRefresh"](_t = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵloadQuery"]()) && (ctx.paginator = _t.first);
         }
       },
-      decls: 51,
+      decls: 50,
       vars: 5,
-      consts: [[1, "mat-elevation-z8"], ["mat-table", "", 3, "dataSource"], ["matColumnDef", "_id"], ["mat-header-cell", "", 4, "matHeaderCellDef"], ["mat-cell", "", 4, "matCellDef"], ["matColumnDef", "name"], ["matColumnDef", "age"], ["matColumnDef", "gender"], ["matColumnDef", "hypertension"], ["matColumnDef", "pressure"], ["matColumnDef", "sugar"], ["matColumnDef", "overweight"], ["matColumnDef", "smooking"], ["matColumnDef", "alcohol"], ["matColumnDef", "exercise"], ["matColumnDef", "drugs"], ["matColumnDef", "edit"], ["matColumnDef", "show"], ["matColumnDef", "delete"], ["mat-header-row", "", 4, "matHeaderRowDef"], ["mat-row", "", 4, "matRowDef", "matRowDefColumns"], [3, "length", "pageSize", "page"], ["mat-header-cell", ""], ["mat-cell", ""], ["mat-button", "", "color", "primary"], ["mat-button", "", "color", "warn"], ["mat-button", ""], ["mat-header-row", ""], ["mat-row", ""]],
+      consts: [[1, "mat-elevation-z8"], ["mat-table", "", 3, "dataSource"], ["matColumnDef", "_id"], ["mat-header-cell", "", 4, "matHeaderCellDef"], ["mat-cell", "", 4, "matCellDef"], ["matColumnDef", "name"], ["matColumnDef", "age"], ["matColumnDef", "gender"], ["matColumnDef", "hypertension"], ["matColumnDef", "pressure"], ["matColumnDef", "sugar"], ["matColumnDef", "overweight"], ["matColumnDef", "smooking"], ["matColumnDef", "alcohol"], ["matColumnDef", "exercise"], ["matColumnDef", "drugs"], ["matColumnDef", "edit"], ["matColumnDef", "show"], ["matColumnDef", "delete"], ["mat-header-row", "", 4, "matHeaderRowDef"], ["mat-row", "", 4, "matRowDef", "matRowDefColumns"], [3, "length", "pageSize", "page"], ["mat-header-cell", ""], ["mat-cell", ""], ["mat-button", "", "color", "primary", 3, "click"], ["mat-button", "", 3, "click"], ["mat-button", "", "color", "warn", 3, "click"], ["mat-header-row", ""], ["mat-row", ""]],
       template: function InsuranceComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
@@ -3805,35 +4036,33 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](40, InsuranceComponent_td_40_Template, 3, 0, "td", 4);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](41, InsuranceComponent_td_41_Template, 3, 0, "td", 4);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](41, 17);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](42, InsuranceComponent_th_42_Template, 2, 0, "th", 3);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](43, InsuranceComponent_td_43_Template, 3, 0, "td", 4);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](42, 17);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](44, 18);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](43, InsuranceComponent_th_43_Template, 2, 0, "th", 3);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](45, InsuranceComponent_th_45_Template, 2, 0, "th", 3);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](44, InsuranceComponent_td_44_Template, 3, 0, "td", 4);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerStart"](45, 18);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](46, InsuranceComponent_th_46_Template, 2, 0, "th", 3);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](47, InsuranceComponent_td_47_Template, 3, 0, "td", 4);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](46, InsuranceComponent_td_46_Template, 3, 0, "td", 4);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementContainerEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](48, InsuranceComponent_tr_48_Template, 1, 0, "tr", 19);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](47, InsuranceComponent_tr_47_Template, 1, 0, "tr", 19);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](49, InsuranceComponent_tr_49_Template, 1, 0, "tr", 20);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](48, InsuranceComponent_tr_48_Template, 1, 0, "tr", 20);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](50, "mat-paginator", 21);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](49, "mat-paginator", 21);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("page", function InsuranceComponent_Template_mat_paginator_page_50_listener($event) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("page", function InsuranceComponent_Template_mat_paginator_page_49_listener($event) {
             return ctx.pagechange($event);
           });
 
@@ -3847,7 +4076,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("dataSource", ctx.dataSource);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](47);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](46);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("matHeaderRowDef", ctx.displayedColumns);
 
@@ -3875,11 +4104,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }]
       }], function () {
         return [{
-          type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+          type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
         }, {
-          type: _insurance_service__WEBPACK_IMPORTED_MODULE_3__["InsuranceService"]
+          type: _insurance_service__WEBPACK_IMPORTED_MODULE_4__["InsuranceService"]
         }, {
-          type: _auth_user_service__WEBPACK_IMPORTED_MODULE_4__["UserService"]
+          type: _auth_user_service__WEBPACK_IMPORTED_MODULE_5__["UserService"]
+        }, {
+          type: _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDialog"]
         }];
       }, {
         paginator: [{
@@ -3951,9 +4182,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           return this._http.get(this.dburl + "/api/insurance/" + id);
         }
       }, {
-        key: "add_user",
-        value: function add_user(id, user) {
-          return this._http.patch(this.dburl + "/api/insurance/" + id, user);
+        key: "edit_insurance",
+        value: function edit_insurance(insurance) {
+          return this._http.patch(this.dburl + "/api/insurance/" + insurance._id, insurance);
+        }
+      }, {
+        key: "delete_insurance",
+        value: function delete_insurance(id) {
+          return this._http["delete"](this.dburl + "/api/insurance/" + id);
         }
       }]);
 
@@ -3980,84 +4216,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }], function () {
         return [{
           type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]
-        }];
-      }, null);
-    })();
-    /***/
-
-  },
-
-  /***/
-  "./src/app/modules/insurance/safe.pipe.ts":
-  /*!************************************************!*\
-    !*** ./src/app/modules/insurance/safe.pipe.ts ***!
-    \************************************************/
-
-  /*! exports provided: SafePipe */
-
-  /***/
-  function srcAppModulesInsuranceSafePipeTs(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "SafePipe", function () {
-      return SafePipe;
-    });
-    /* harmony import */
-
-
-    var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! @angular/core */
-    "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
-    /* harmony import */
-
-
-    var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! @angular/platform-browser */
-    "./node_modules/@angular/platform-browser/__ivy_ngcc__/fesm2015/platform-browser.js");
-
-    var SafePipe =
-    /*#__PURE__*/
-    function () {
-      function SafePipe(sanitizer) {
-        _classCallCheck(this, SafePipe);
-
-        this.sanitizer = sanitizer;
-      }
-
-      _createClass(SafePipe, [{
-        key: "transform",
-        value: function transform(url) {
-          return this.sanitizer.bypassSecurityTrustResourceUrl(url);
-        }
-      }]);
-
-      return SafePipe;
-    }();
-
-    SafePipe.ɵfac = function SafePipe_Factory(t) {
-      return new (t || SafePipe)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["DomSanitizer"]));
-    };
-
-    SafePipe.ɵpipe = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefinePipe"]({
-      name: "safe",
-      type: SafePipe,
-      pure: true
-    });
-    /*@__PURE__*/
-
-    (function () {
-      _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](SafePipe, [{
-        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Pipe"],
-        args: [{
-          name: 'safe'
-        }]
-      }], function () {
-        return [{
-          type: _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["DomSanitizer"]
         }];
       }, null);
     })();
@@ -4252,7 +4410,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "span");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "Insurance");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "KGiSL Insurance");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -4304,11 +4462,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
 
         if (rf & 2) {
-          var _r86 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](14);
+          var _r90 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵreference"](14);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](10);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("matMenuTriggerFor", _r86);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("matMenuTriggerFor", _r90);
         }
       },
       directives: [_angular_material__WEBPACK_IMPORTED_MODULE_3__["MatToolbar"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatToolbarRow"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatButton"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatIcon"], _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_4__["DefaultFlexDirective"], _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_4__["DefaultLayoutDirective"], _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_4__["DefaultLayoutAlignDirective"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatMenuTrigger"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["_MatMenu"], _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatMenuItem"]],
@@ -4385,6 +4543,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _classCallCheck(this, SidebarComponent);
 
         this.username = localStorage.getItem("currentuser");
+        this.path = __webpack_require__(
+        /*! ./user_icon.png */
+        "./src/app/shared/components/sidebar/user_icon.png");
         this.email = localStorage.getItem('email');
       }
 
@@ -4406,8 +4567,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       type: SidebarComponent,
       selectors: [["app-sidebar"]],
       decls: 17,
-      vars: 2,
-      consts: [[1, "profile-card"], [1, "header"], ["src", "https://material.angular.io/assets/img/examples/shiba2.jpg", "alt", "Meenakshi"], ["matSubheader", ""], ["mat-list-item", "", "routerLinkActive", "list-item-active", "routerLink", "/"], ["mat-list-item", "", "routerLinkActive", "list-item-active", "routerLink", "/insurances"], ["mat-list-item", "", "routerLinkActive", "list-item-active", "routerLink", "/insurance/new"]],
+      vars: 3,
+      consts: [[1, "profile-card"], [1, "header"], ["alt", "Meenakshi", 3, "src"], ["matSubheader", ""], ["mat-list-item", "", "routerLinkActive", "list-item-active", "routerLink", "/"], ["mat-list-item", "", "routerLinkActive", "list-item-active", "routerLink", "/insurances"], ["mat-list-item", "", "routerLinkActive", "list-item-active", "routerLink", "/insurance/new"]],
       template: function SidebarComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "mat-nav-list");
@@ -4471,6 +4632,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.email);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", ctx.path, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
         }
       },
       directives: [_angular_material__WEBPACK_IMPORTED_MODULE_1__["MatNavList"], _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatDivider"], _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatListSubheaderCssMatStyler"], _angular_material__WEBPACK_IMPORTED_MODULE_1__["MatListItem"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterLinkWithHref"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterLinkActive"]],
@@ -4492,6 +4657,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     })();
     /***/
 
+  },
+
+  /***/
+  "./src/app/shared/components/sidebar/user_icon.png":
+  /*!*********************************************************!*\
+    !*** ./src/app/shared/components/sidebar/user_icon.png ***!
+    \*********************************************************/
+
+  /*! no static exports found */
+
+  /***/
+  function srcAppSharedComponentsSidebarUser_iconPng(module, exports, __webpack_require__) {
+    module.exports = __webpack_require__.p + "user_icon.png";
+    /***/
   },
 
   /***/

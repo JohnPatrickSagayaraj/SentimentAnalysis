@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MatSidenavModule, MatPaginatorModule, MatGridListModule, MatProgressSpinnerModule, MatButtonModule, MatFormFieldModule, MatCardModule, MatInputModule, MatDialogModule, MatDividerModule, MatRadioModule, MatTableModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
-import { SafePipe } from 'src/app/modules/insurance/safe.pipe';
 import { InsuranceCreateComponent } from 'src/app/modules/insurance/insurance-create/insurance-create.component';
 import { CalculateComponent } from 'src/app/modules/insurance/calculate/calculate.component';
 import { InsuranceComponent } from 'src/app/modules/insurance/insurance.component';
@@ -19,7 +18,6 @@ import { InsuranceShowComponent } from 'src/app/modules/insurance/insurance-show
     InsuranceComponent,
     InsuranceCreateComponent,
     InsuranceShowComponent,
-    SafePipe,
     CalculateComponent
   ],
   imports: [
@@ -44,8 +42,7 @@ import { InsuranceShowComponent } from 'src/app/modules/insurance/insurance-show
     CUSTOM_ELEMENTS_SCHEMA
   ],
   exports: [
-    InsuranceCreateComponent,
-    SafePipe
+    InsuranceCreateComponent
   ]
 })
 export class DefaultModule { }
