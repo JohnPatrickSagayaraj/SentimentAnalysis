@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { InsuranceService } from './insurance.service';
 import { UserService } from '../../auth/user.service';
 import { InsuranceShowComponent } from './insurance-show/insurance-show.component';
+import { CalculateComponent } from './calculate/calculate.component';
 
 @Component({
   selector: 'app-insurance',

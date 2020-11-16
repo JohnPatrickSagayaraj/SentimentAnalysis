@@ -45,7 +45,6 @@ import { InsuranceShowComponent } from 'src/app/modules/insurance/insurance-show
   ],
   exports: [
     InsuranceCreateComponent,
-    InsuranceShowComponent,
     SafePipe
   ]
 })

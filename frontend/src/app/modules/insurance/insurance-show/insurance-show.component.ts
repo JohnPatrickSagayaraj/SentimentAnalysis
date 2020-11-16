@@ -1,8 +1,7 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import {Component, Inject, Injectable, OnInit} from  '@angular/core';
+import { Router } from '@angular/router';
+import {MatDialogRef, MAT_DIALOG_DATA, MatDialog} from  '@angular/material/dialog';
 import { InsuranceService } from '../insurance.service';
-import { SafePipe } from '../safe.pipe';
-import { MatDialogModule, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from  '@angular/material';
 
 @Component({
   selector: 'app-insurance-show',
@@ -11,10 +10,7 @@ import { MatDialogModule, MatDialog, MatDialogRef, MAT_DIALOG_DATA } from  '@ang
 })
 export class InsuranceShowComponent implements OnInit {
 
-  constructor(private dialogRef: MatDialogRef<InsuranceShowComponent>,
-    private _router: Router,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    private _is: InsuranceService) {
+  constructor(private  dialogRef:  MatDialogRef<any>, private _router: Router, @Inject(MAT_DIALOG_DATA) public data: any, private _is: InsuranceService) {
   }
 
   result: any = {};
@@ -35,7 +31,6 @@ export class InsuranceShowComponent implements OnInit {
 
   close() {
     this.dialogRef.close();
-    this._router.navigate(["/insurances"]);
   }
 
 }
