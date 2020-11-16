@@ -2117,7 +2117,9 @@ class InsuranceService {
         return this._http.get(this.dburl + "/api/insurance/" + id);
     }
     edit_insurance(insurance) {
-        return this._http.patch(this.dburl + "/api/insurance/" + insurance._id, insurance);
+        const id = insurance._id;
+        delete insurance._id;
+        return this._http.put(this.dburl + "/api/insurance/" + id, insurance);
     }
     delete_insurance(id) {
         return this._http.delete(this.dburl + "/api/insurance/" + id);

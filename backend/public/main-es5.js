@@ -4184,7 +4184,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "edit_insurance",
         value: function edit_insurance(insurance) {
-          return this._http.patch(this.dburl + "/api/insurance/" + insurance._id, insurance);
+          var id = insurance._id;
+          delete insurance._id;
+          return this._http.put(this.dburl + "/api/insurance/" + id, insurance);
         }
       }, {
         key: "delete_insurance",
