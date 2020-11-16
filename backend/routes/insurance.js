@@ -93,10 +93,10 @@ router.get("/:id", (req, res, next) => {
 		  }
 		  else {
 			let premium = 5000;
-			age = calculateAge(req.body.age, premium);
-			gender = calculateGender(req.body.gender, age);
-			current = calculateCurrentHealth([req.body.hypertension, req.body.pressure, req.body.sugar, req.body.overweight], gender);
-			output = calculateHabit([req.body.smooking, req.body.alcohol, req.body.exercise, req.body.drugs], current);
+			age = calculateAge(result[0].age, premium);
+			gender = calculateGender(result[0].gender, age);
+			current = calculateCurrentHealth([result[0].hypertension, result[0].pressure, result[0].sugar, result[0].overweight], gender);
+			output = calculateHabit([result[0].smooking, result[0].alcohol, result[0].exercise, result[0].drugs], current);
 			res.json({ result: result[0], premium: output.toFixed() });
 		  }
 	})
