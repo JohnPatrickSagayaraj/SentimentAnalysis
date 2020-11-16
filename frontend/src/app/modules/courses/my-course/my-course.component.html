@@ -1,0 +1,15 @@
+<mat-paginator [length]="totalpage"
+[pageSize]="pagesize"
+(page)="pagechange($event)">
+</mat-paginator>
+<mat-grid-list #grid [cols]="cols" rowHeight="1.5:2">
+  <mat-grid-tile *ngFor="let course of courses">
+    <div class="card" style="width: 17rem;" (click)="show(course._id)">
+      <iframe class="embed-responsive-item card-img-top" [src]="course.uri | safe" allowfullscreen ></iframe>
+      <div class="card-body">
+        <h5 class="card-title">{{ course.name }}</h5>
+        <p class="card-text">{{ course.description }}</p>
+      </div>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

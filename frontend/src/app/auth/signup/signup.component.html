@@ -1,0 +1,69 @@
+<div #alert class="alert alert-danger alert-dismissible fade show" role="alert">
+  <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  There was a problem with user details.
+</div>
+
+<div class="main-div">
+  <mat-card class="z-depth center" flex="50" >
+    <div class="profile-card">
+      <div class="header">
+        <h2>Register</h2>
+      </div>
+      <img [src]="logo" alt="Register">
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="profile-card">
+      <div class="header">
+      </div>
+    </div>
+
+    <form class="example-form" #form="ngForm" (submit)="signup(form)">
+      <mat-form-field class="example-full-width">
+        <input type="text" name="username" matInput [(ngModel)]="user.username" #username="ngModel" required placeholder="Username">
+        <mat-icon matSuffix>person_outline</mat-icon>
+        <mat-error *ngIf="username.invalid">Username must be present</mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input type="email" name="email" matInput [(ngModel)]="user.email" #email="ngModel" required placeholder="Email">
+        <mat-icon matSuffix>email</mat-icon>
+        <mat-error *ngIf="email.invalid">Email must be present</mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input [type]="hide ? 'password' : 'text'" name="password" matInput [(ngModel)]="user.password" #password="ngModel" required placeholder="Password" validateEqual="confirm_password" reverse="true">
+        <mat-icon matSuffix (click)="hide = !hide">{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+        <mat-error *ngIf="password.invalid">Password must be present</mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input [type]="hide ? 'password' : 'text'" name="confirm_password" matInput [(ngModel)]="user.confirm_password" #confirm_password="ngModel" required placeholder="Password confirmation" validateEqual="password">
+        <mat-icon matSuffix (click)="hide = !hide">{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+        <mat-error *ngIf="confirm_password.invalid || confirm_password.errors?.validateEqual">Password must be present and password must be match with password confirmation.</mat-error>
+      </mat-form-field>
+      <mat-checkbox name="is_admin" class="admin-style" [(ngModel)]="user.is_admin">Admin</mat-checkbox>
+      <button mat-raised-button color="primary" [disabled]="form.invalid">Signup</button>
+    </form>
+
+    <div class="profile-card">
+      <div class="header">
+      </div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="profile-card">
+      <div class="header">
+      </div>
+    </div>
+
+    <div class="profile-card">
+      <div class="header">
+        <h6>Already have an account?</h6>
+        <h6><a routerLink="/login">Log in for an account</a></h6>
+      </div>
+    </div>
+
+  </mat-card>
+</div>

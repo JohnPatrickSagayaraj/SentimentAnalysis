@@ -1,0 +1,14 @@
+.adjust-size {
+  width: 90%;
+  height: 60%;
+  margin: 2rem auto;
+}
+
+h3 {
+  margin: 1rem;
+}
+
+.middle {
+  margin: auto;
+  display: block;
+}

@@ -1,0 +1,12 @@
+.adjust-size {
+  width: 90%;
+  margin: 2rem auto;
+}
+
+.card {
+  cursor: pointer
+}
+
+/* iframe {
+  pointer-events: none;
+} */

@@ -1,0 +1,26 @@
+input[type="file"] {
+  visibility: hidden;
+}
+
+.example-full-width {
+  width: 80%;
+  margin: auto;
+  display: block;
+}
+
+mat-card {
+  width: 60%;
+  margin: 2rem auto;
+}
+
+.middle {
+  margin: auto;
+  display: block;
+}
+
+.mat-middle {
+  margin: 5rem auto;
+}
+
+
+

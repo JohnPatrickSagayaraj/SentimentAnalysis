@@ -1,0 +1,58 @@
+<div #alert class="alert alert-danger alert-dismissible fade show" role="alert">
+  <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  {{ error }}
+</div>
+
+<div class="main-div">
+  <mat-card class="z-depth center" flex="50" >
+    <div class="profile-card">
+      <div class="header">
+        <h2>Login</h2>
+      </div>
+      <img [src]="logo" alt="Login">
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="profile-card">
+      <div class="header">
+      </div>
+    </div>
+
+    <form class="example-form" #form="ngForm" (submit)="login(form)">
+      <mat-form-field class="example-full-width">
+        <input type="email" name="email" matInput [(ngModel)]="user.email" #email="ngModel" required placeholder="Email">
+        <mat-icon matSuffix>email</mat-icon>
+        <mat-error *ngIf="email.invalid">Email must be present</mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input [type]="hide ? 'password' : 'text'" name="password" matInput [(ngModel)]="user.password" #password="ngModel" required placeholder="Password">
+        <mat-icon matSuffix (click)="hide = !hide">{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+        <mat-error *ngIf="password.invalid">Password must be present</mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" [disabled]="form.invalid">Login</button>
+    </form>
+
+    <div class="profile-card">
+      <div class="header">
+      </div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="profile-card">
+      <div class="header">
+      </div>
+    </div>
+
+    <div class="profile-card">
+      <div class="header">
+        <h6>Can't login?</h6>
+        <h6><a routerLink="/signup">Sign up for an account</a></h6>
+      </div>
+    </div>
+
+  </mat-card>
+</div>

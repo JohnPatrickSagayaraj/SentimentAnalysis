@@ -1,0 +1,42 @@
+.example-full-width {
+  width: 80%;
+  margin: auto;
+  display: block;
+}
+
+button {
+  margin: auto;
+  display: block;
+}
+
+.center {
+  width: 400px;
+}
+
+.main-div{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-card {
+  text-align: center;
+  padding: 0 10px 10px 10px;
+  img {
+    width: 200px;
+    height: 100px;
+  }
+}
+
+.alert {
+  width: 300px;
+  margin: 2rem auto;
+}
+
+.admin-style {
+  margin-left: 2.5rem;
+}
+
+
+

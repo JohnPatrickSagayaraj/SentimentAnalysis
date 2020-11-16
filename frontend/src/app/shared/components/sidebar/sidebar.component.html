@@ -1,0 +1,22 @@
+<mat-nav-list>
+  <div class="profile-card">
+    <div class="header">
+      <h4>{{ username }}</h4>
+      <h6>{{ email }}</h6>
+    </div>
+    <img src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Meenakshi">
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <h2 matSubheader>Pages</h2>
+
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/">Dashboard</a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/courses">Courses</a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/mycourses">My courses</a>
+  <div *ngIf="is_admin">
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/course/new">New course</a>
+    <a mat-list-item routerLinkActive="list-item-active" routerLink="/report">Report</a>
+  </div>
+
+</mat-nav-list>
