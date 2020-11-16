@@ -9,7 +9,7 @@ import { environment } from '../../../environments/environment';
 })
 export class InsuranceService {
 
-  public dburl = "http://localhost:8080";
+  public dburl = "";
 
   constructor(private _http: HttpClient) { }
 
