@@ -1,0 +1,14 @@
+<mat-card class="example-card">
+  <mat-spinner class="mat-middle" *ngIf="graph.length === 0"></mat-spinner>
+  <plotly-plot [data]="graph.data" [layout]="graph.layout" *ngIf="graph.length !== 0"></plotly-plot>
+</mat-card>
+<br>
+<mat-card class="example-card">
+  <mat-spinner class="mat-middle" *ngIf="graphbar.length === 0"></mat-spinner>
+  <plotly-plot [data]="graphbar.data" [layout]="graphbar.layout" *ngIf="graphbar.length !== 0"></plotly-plot>
+</mat-card>
+<br>
+<mat-card class="example-card">
+  <mat-spinner class="mat-middle" *ngIf="graphbarhorizontal.length === 0"></mat-spinner>
+  <plotly-plot [data]="graphbarhorizontal.data" [layout]="graphbarhorizontal.layout" *ngIf="graphbarhorizontal.length !== 0"></plotly-plot>
+</mat-card>

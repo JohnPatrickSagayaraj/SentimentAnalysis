@@ -14,10 +14,6 @@ mat-card {
   display: block;
 }
 
-.mat-radio-button ~ .mat-radio-button {
-  margin-left: 16px;
-}
-
 ::ng-deep label {
   margin-bottom: 0rem;
   margin-left: 10px;

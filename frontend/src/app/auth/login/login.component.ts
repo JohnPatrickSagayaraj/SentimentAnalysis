@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 
@@ -11,20 +11,13 @@ declare var require: any;
 })
 export class LoginComponent implements OnInit {
 
-  @ViewChild('alert', { static: true }) alert: ElementRef;
-
   constructor(private _us:UserService, private _router: Router) { }
 
-  public logo = require("src/app/auth/logo.jpg");
+  public logo = require("src/app/auth/logo.png");
 
   public user:any = {  username: "", email: "", password: "" };
 
   ngOnInit(): void {
-    this.alert.nativeElement.classList.remove('show');
-  }
-
-  closeAlert() {
-    this.alert.nativeElement.classList.remove('show');
   }
 
   error = "";
@@ -47,7 +40,6 @@ export class LoginComponent implements OnInit {
   		},
   		err => {
         this.error = err.error.err;
-        this.alert.nativeElement.classList.add('show');
       }
     )
   }

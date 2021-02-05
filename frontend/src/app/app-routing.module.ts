@@ -4,10 +4,12 @@ import { DefaultComponent } from './layouts/default/default.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
-import { InsuranceCreateComponent } from './modules/insurance/insurance-create/insurance-create.component';
+import { SentimentCreateComponent } from './modules/sentiment/sentiment-create/sentiment-create.component';
 import { AuthGuard } from './auth/auth.guard';
-import { InsuranceComponent } from './modules/insurance/insurance.component';
-import { InsuranceShowComponent } from './modules/insurance/insurance-show/insurance-show.component';
+import { SentimentComponent } from './modules/sentiment/sentiment.component';
+import { SentimentShowComponent } from './modules/sentiment/sentiment-show/sentiment-show.component';
+import { ReviewComponent } from './modules/review/review.component';
+import { ReviewCreateComponent } from './modules/review/review-create/review-create.component';
 
 const routes: Routes = [
   {
@@ -20,25 +22,30 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
-        path: 'insurances',
-        component: InsuranceComponent,
+        path: 'sentiments',
+        component: SentimentComponent,
         canActivate: [AuthGuard]
       },
       {
-        path: 'insurance/new',
-        component: InsuranceCreateComponent,
+        path: 'sentiment/new',
+        component: SentimentCreateComponent,
         canActivate: [AuthGuard]
       },
       {
-        path: 'insurance/show/:id',
-        component: InsuranceShowComponent,
+        path: 'sentiment/show/:id',
+        component: SentimentShowComponent,
         canActivate: [AuthGuard]
       },
       {
-        path: 'insurance/:id/edit',
-        component: InsuranceCreateComponent,
+        path: 'reviews',
+        component: ReviewComponent,
         canActivate: [AuthGuard]
       },
+      {
+        path: 'review/new',
+        component: ReviewCreateComponent,
+        canActivate: [AuthGuard]
+      }
     ]
   },
   {

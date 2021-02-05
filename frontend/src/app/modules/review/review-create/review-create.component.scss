@@ -1,0 +1,23 @@
+.example-full-width {
+    width: 90%;
+    margin: auto;
+    display: block;
+  }
+  
+  mat-card {
+    width: 90%;
+    margin: 0.5rem auto;
+  }
+  
+  .middle {
+    margin: auto;
+    display: block;
+  }
+  
+  ::ng-deep label {
+    margin-bottom: 0rem;
+    margin-left: 10px;
+  }
+  
+  
+  
