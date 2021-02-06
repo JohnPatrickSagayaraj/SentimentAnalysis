@@ -13,7 +13,7 @@ export class ReviewComponent implements OnInit {
 
   constructor(private _router: Router, private _is: SentimentService, private _us: UserService) { }
 
-  displayedColumns: string[] = ['_id', 'review'];
+  displayedColumns: string[] = ['_id', 'review', 'created_at', 'product_name', 'feedback', 'image'];
   dataSource = new MatTableDataSource<any>([]);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -37,5 +37,25 @@ export class ReviewComponent implements OnInit {
         this.dataSource = new MatTableDataSource<any>(res);
       }
     )
+  }
+
+  getImageUrl(feedback): string {
+    if (feedback > 0) {
+      return "https://img.icons8.com/color/80/000000/happy.png";
+    } else if(feedback < 0) {
+      return "https://img.icons8.com/color/80/000000/angry.png";
+    } else {
+      return "https://img.icons8.com/color/80/000000/neutral.png";
+    }
+  }
+
+  getFeedback(feedback): string {
+    if (feedback > 0) {
+      return "Postive";
+    } else if(feedback < 0) {
+      return "Negative";
+    } else {
+      return "Neutral";
+    }
   }
 }

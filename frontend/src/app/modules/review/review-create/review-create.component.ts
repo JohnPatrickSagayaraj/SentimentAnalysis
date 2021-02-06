@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SentimentService } from '../../sentiment/sentiment.service';
 
 @Component({
@@ -10,15 +10,29 @@ import { SentimentService } from '../../sentiment/sentiment.service';
 export class ReviewCreateComponent implements OnInit {
 
   ngOnInit(): void {
+    this.route.params.subscribe(
+      params => {
+        if (params.id) {
+          this._is.get_product(params.id).subscribe(
+            res => {
+              this.reviewPayload.product_id = res._id;
+              this.reviewPayload.product_name = res.product_name;
+            }
+          )
+        }
+      }
+    )
   }
 
-  constructor(private _is: SentimentService, private _router: Router) { }
+  constructor(private _is: SentimentService, private _router: Router, private route: ActivatedRoute) { }
 
   isloading: boolean = false;
 
   reviewPayload: any = {
     review: "",
-    user: localStorage.getItem('user_id')
+    user: localStorage.getItem('user_id'),
+    product_id: '',
+    product_name: ''
   };
 
   submit() {

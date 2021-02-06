@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class SentimentService {
 
-  public dburl = "http://localhost:8080";
+  public dburl = "";
 
   constructor(private _http: HttpClient) { }
 
@@ -40,5 +40,13 @@ export class SentimentService {
 
   public delete_review(id):Observable<any> {
     return this._http.delete<any>(this.dburl + "/api/sentiment/review/" + id);
+  }
+
+  public get_all_products():Observable<any[]> {
+    return this._http.get<any[]>(this.dburl + "/api/products");
+  }
+
+  public get_product(id:string):Observable<any> {
+    return this._http.get<any>(this.dburl + "/api/products/" + id);
   }
 }

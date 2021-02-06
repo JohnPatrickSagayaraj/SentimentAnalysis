@@ -10,7 +10,7 @@ export class UserService {
 
   constructor(private _http: HttpClient) { }
 
-  public dburl = "http://localhost:8080";
+  public dburl = "";
 
   public user:any = { username: "", email: "", password: "" };
 

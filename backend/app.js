@@ -4,6 +4,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/user');
 const reviewRoutes = require('./routes/review');
+const productRoutes = require('./routes/product');
 const path = require('path');
 const app = express();
 
@@ -18,6 +19,7 @@ mongoose.connect('mongodb+srv://john009:john009@cluster0.pdd5c.mongodb.net/Senti
 
 app.use("/api/user", userRoutes);
 app.use("/api/sentiment", reviewRoutes);
+app.use("/api/products", productRoutes);
 
 app.use(express.static(path.join(__dirname, "public")));
 

@@ -4,7 +4,7 @@ import { DefaultComponent } from './default.component';
 import { DashboardComponent } from 'src/app/modules/dashboard/dashboard.component';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { MatSidenavModule, MatPaginatorModule, MatGridListModule, MatProgressSpinnerModule, MatButtonModule, MatFormFieldModule, MatCardModule, MatInputModule, MatDialogModule, MatDividerModule, MatRadioModule, MatTableModule } from '@angular/material';
+import { MatSidenavModule, MatPaginatorModule, MatGridListModule, MatProgressSpinnerModule, MatButtonModule, MatFormFieldModule, MatCardModule, MatInputModule, MatDialogModule, MatDividerModule, MatRadioModule, MatTableModule, MatSelectModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { SentimentCreateComponent } from 'src/app/modules/sentiment/sentiment-create/sentiment-create.component';
 import { SentimentComponent } from 'src/app/modules/sentiment/sentiment.component';
@@ -12,6 +12,7 @@ import { SentimentShowComponent } from 'src/app/modules/sentiment/sentiment-show
 import * as PlotlyJS from 'plotly.js/dist/plotly.js';
 import { PlotlyModule } from 'angular-plotly.js';
 import { ReviewComponent } from 'src/app/modules/review/review.component';
+import { ProductsComponent } from 'src/app/modules/products/products.component';
 import { ReviewCreateComponent } from 'src/app/modules/review/review-create/review-create.component';
  
 PlotlyModule.plotlyjs = PlotlyJS;
@@ -24,7 +25,8 @@ PlotlyModule.plotlyjs = PlotlyJS;
     SentimentCreateComponent,
     SentimentShowComponent,
     ReviewComponent,
-    ReviewCreateComponent
+    ReviewCreateComponent,
+    ProductsComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +45,8 @@ PlotlyModule.plotlyjs = PlotlyJS;
     MatDividerModule,
     MatRadioModule,
     MatTableModule,
-    PlotlyModule
+    PlotlyModule,
+    MatSelectModule
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA

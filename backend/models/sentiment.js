@@ -5,6 +5,14 @@ const sentimentSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  product_id: {
+    type: String,
+    required: true
+  },
+  product_name: {
+    type: String,
+    required: true
+  },
   reviews: {
     type: Array,
     required: true

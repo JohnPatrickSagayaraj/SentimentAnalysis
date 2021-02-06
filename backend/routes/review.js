@@ -10,24 +10,11 @@ const spellCorrector = new SpellCorrector();
 spellCorrector.loadDictionary();
 
 router.post("", (req, res, next) => {
-	Review.find({ "created_at": { "$gte": new Date(req.body.start_date) }, "created_at": { "$lte": new Date(req.body.end_date) }, 'user': { $eq: req.body.user } }).then((reviews) => {
+	Review.find({ "created_at": { "$gte": new Date(req.body.start_date) }, "created_at": { "$lte": new Date(req.body.end_date) }, 'user': { $eq: req.body.user }, 'product_id': { $eq: req.body.product_id } }).then((reviews) => {
 		console.log('reviews', reviews);
 		const analysisArr = [];
 		reviews.forEach((review) => {
-			const lexedReview = aposToLexForm(review.review);
-			const casedReview = lexedReview.toLowerCase();
-			const alphaOnlyReview = casedReview.replace(/[^a-zA-Z\s]+/g, '');
-			const { WordTokenizer } = natural;
-			const tokenizer = new WordTokenizer();
-			const tokenizedReview = tokenizer.tokenize(alphaOnlyReview);
-			tokenizedReview.forEach((word, index) => {
-				tokenizedReview[index] = spellCorrector.correct(word);
-			});
-			const filteredReview = SW.removeStopwords(tokenizedReview);
-			const { SentimentAnalyzer, PorterStemmer } = natural;
-			const analyzer = new SentimentAnalyzer('English', PorterStemmer, 'afinn');
-			const analysis = analyzer.getSentiment(filteredReview);
-			analysisArr.push(analysis);
+			analysisArr.push(analysis(review.review));
 		})
 		const sentiment = new Sentiment({ ...req.body, reviews: analysisArr });
 		sentiment.save().then((result) => {
@@ -35,6 +22,23 @@ router.post("", (req, res, next) => {
 		});
 	});
 });
+
+function analysis(review) {
+	const lexedReview = aposToLexForm(review);
+	const casedReview = lexedReview.toLowerCase();
+	const alphaOnlyReview = casedReview.replace(/[^a-zA-Z\s]+/g, '');
+	const { WordTokenizer } = natural;
+	const tokenizer = new WordTokenizer();
+	const tokenizedReview = tokenizer.tokenize(alphaOnlyReview);
+	tokenizedReview.forEach((word, index) => {
+		tokenizedReview[index] = spellCorrector.correct(word);
+	});
+	const filteredReview = SW.removeStopwords(tokenizedReview);
+	const { SentimentAnalyzer, PorterStemmer } = natural;
+	const analyzer = new SentimentAnalyzer('English', PorterStemmer, 'afinn');
+	const analysis = analyzer.getSentiment(filteredReview);
+	return analysis;
+}
 
 router.get("", (req, res, next) => {
 	const pagesize = +req.query.pagesize;
@@ -65,7 +69,7 @@ router.get("/reviews", (req, res, next) => {
 });
 
 router.post("/review", (req, res, next) => {
-	const review = new Review({ ...req.body, created_at: new Date() });
+	const review = new Review({ ...req.body, created_at: new Date(), feedback: analysis(req.body.review) });
 	review.save().then((result) => {
 		res.json(result);
 	})

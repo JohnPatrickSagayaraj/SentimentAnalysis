@@ -10,6 +10,7 @@ import { SentimentComponent } from './modules/sentiment/sentiment.component';
 import { SentimentShowComponent } from './modules/sentiment/sentiment-show/sentiment-show.component';
 import { ReviewComponent } from './modules/review/review.component';
 import { ReviewCreateComponent } from './modules/review/review-create/review-create.component';
+import { ProductsComponent } from './modules/products/products.component';
 
 const routes: Routes = [
   {
@@ -42,8 +43,13 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
-        path: 'review/new',
+        path: 'product/:id/review/new',
         component: ReviewCreateComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'products',
+        component: ProductsComponent,
         canActivate: [AuthGuard]
       }
     ]

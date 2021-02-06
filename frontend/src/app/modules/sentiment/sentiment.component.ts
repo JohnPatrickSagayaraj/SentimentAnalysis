@@ -13,7 +13,7 @@ export class SentimentComponent implements OnInit {
 
   constructor(private _router: Router, private _is: SentimentService, private _us: UserService) { }
 
-  displayedColumns: string[] = ['_id', 'name', 'start_date', 'end_date', 'show', 'delete'];
+  displayedColumns: string[] = ['_id', 'name', 'start_date', 'end_date', 'product_name', 'show', 'delete'];
   dataSource = new MatTableDataSource<any>([]);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

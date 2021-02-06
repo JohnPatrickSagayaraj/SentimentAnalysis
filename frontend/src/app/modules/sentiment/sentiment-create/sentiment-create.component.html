@@ -6,6 +6,12 @@
         required>
     </mat-form-field>
     <mat-form-field class="example-full-width">
+      <mat-label>Choose an product</mat-label>
+      <mat-select [(ngModel)]="sentiment.product_id" name="product_id">
+        <mat-option *ngFor="let product of products" [value]="product._id">{{ product.product_name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
       <input type="date" name="start_date" matInput [(ngModel)]="sentiment.start_date" #start_date="ngModel"
         placeholder="Start Date">
     </mat-form-field>
