@@ -2,11 +2,10 @@
     <div class="row">
         <div class="col-4" *ngFor="let product of products">
             <div class="card" style="width: 18rem;">
-                <img class="card-img-top" [src]="product.path" alt="Card image cap" height="500rem">
+                <img class="card-img-top" [src]="product.path" alt="Card image cap" height="300rem">
                 <div class="card-body">
                   <h3 class="card-title">{{ product.product_name }}</h3>
-                  <h5 class="card-text">{{ product.price }}</h5>
-                  <h6 class="card-text">{{ product.pcode }}</h6>
+                  <h5 class="card-text">{{ product.price | currency: 'INR' }}</h5>
                   <button class="btn btn-primary" (click)="addReview(product._id)">Add Review</button>
                 </div>
               </div>

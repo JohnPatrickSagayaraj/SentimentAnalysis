@@ -24,7 +24,7 @@ export class SentimentShowComponent implements OnInit {
           res => {
             this.result = res;
             const x = ['Positive', 'Neutral', 'Negative'];
-            const y = [res.reviews.filter(val => val > 1).length, res.reviews.filter(val => val === 1).length, res.reviews.filter(val => val < 1).length];
+            const y = [res.reviews.filter(val => val > 0).length, res.reviews.filter(val => val === 0).length, res.reviews.filter(val => val < 0).length];
             this.graph = {
               data: [{
                 type: "pie",
