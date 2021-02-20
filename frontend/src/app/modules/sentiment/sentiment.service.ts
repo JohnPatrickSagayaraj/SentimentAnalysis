@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class SentimentService {
 
-  public dburl = "http://localhost:8080";
+  public dburl = "";
 
   constructor(private _http: HttpClient) { }
 
